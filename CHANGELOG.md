@@ -75,3 +75,8 @@
   liegt als bilder/calvin.jpg; Original unberührt
 - Zweispaltig am Desktop (Foto links), einspaltig am Handy
 - Begleittext ist ein Entwurf und muss von Calvin gegengelesen werden
+
+## Vorstellungstext von Calvin
+- Entwurfstext ersetzt durch Calvins eigene Biografie (Sony Ericsson bis heute)
+- Überschrift "Hi, ich bin Calvin.", erster Satz als hervorgehobener Lead
+- Foto wird jetzt oben ausgerichtet statt zentriert, weil der Text deutlich länger ist
