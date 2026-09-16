@@ -51,3 +51,11 @@
 - Sektionstitel: "Ausgewählte Arbeiten" -> "Meine Kundenprojekte"
 - Querformat-Video sitzt jetzt mittig zwischen den Hochformaten (3 / breit / 3)
   statt in einem eigenen Container darüber; .item.wide nutzt grid-column: 1 / -1
+
+## Über-mich-Bereich neu
+- "ÜBER MICH" wird nicht mehr in Versalien gesetzt: neue Klasse .eyebrow.normal
+- Neuer Intro-Absatz plus 5 Erfahrungsbereiche (.bereiche / .bereich)
+  Performance Marketing, Personal Brands & YouTube, Business Consulting,
+  Clubs & Events, Motion Design
+- Tags ersetzt: Hooks & Retention, Personal Branding, Performance Ads,
+  Motion Design, Brand-Look, Short-Form
