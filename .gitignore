@@ -1,0 +1,13 @@
+# Original-Rohmaterial (4K, mehrere hundert MB) gehoert nicht ins Repo
+Performance Ads/
+Sport Edits/
+Long form content intro.mp4
+*.mp4_
+
+# Aussortierte Web-Versionen
+videos/_nicht-verwendet/
+videos/_encode.log
+
+# System
+Thumbs.db
+.DS_Store

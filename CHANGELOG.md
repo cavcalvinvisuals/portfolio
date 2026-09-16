@@ -1,0 +1,42 @@
+# Changelog
+
+## [Unreleased]
+### Setup
+- index.html aus Downloads in den Projektordner kopiert
+- Sicherungskopie index.backup.html angelegt
+- Git-Repo initialisiert, Branch `videos-einbauen`
+
+## Videos eingebunden
+- 10 Videos web-optimiert nach `videos/` (H.264, AAC, faststart, max 1080x1920, 30fps, CRF 23)
+- Zweite Variante `videos-opt/` (CRF 26, 4 Mbit Cap) zum Größenvergleich
+- Vorschaubilder (.jpg) je Video erzeugt, als poster-Attribut eingebunden
+- VIDEOS-Array auf die 10 Pfade gesetzt
+- CALENDLY_URL gesetzt: https://calendly.com/cavcalvinvisuals/30min
+- INSTAGRAM_URL bleibt Platzhalter (auf Wunsch)
+- Lokal getestet: 10/10 Karten laden, keine Konsolenfehler, Lightbox + Mobile-Swipe ok
+
+## Anpassungen nach Feedback
+- Encodes auf CRF 26 (4 Mbit Cap) umgestellt: 108 MB statt 187 MB
+- "Muay Thai Edit" entfernt (jetzt 9 Videos)
+- "Long form content intro" nach ganz oben, als breite 16:9-Karte über der vollen Breite
+  - dafür in 1920x1080 neu encodiert (CRF 24), eigener Container #gridWide
+  - neue Konstante QUERFORMAT steuert, welche Videos die breite Karte bekommen
+- Poster-Bilder auf 640px (bzw. 1280px fürs Intro) verkleinert
+- Getestet: 9/9 Karten laden, 0 Konsolenfehler, Lightbox mit Ton, Mobile-Swipe ohne Überlauf
+
+## Reihenfolge angepasst
+- Neu: Intro (breit) / Rasierer, Education, Clothingbrand / Möbel, Supplement, Superboncamp / Pizza, Rausch Shampoo
+- Rausch Shampoo war in der Ansage nicht genannt und steht vorerst am Ende
+
+## Überschriften unter den Videos
+- VIDEOS-Array führt jetzt pro Eintrag { datei, titel }
+- Jede Karte sitzt in einem .item-Wrapper mit .caption darunter
+- Mobile: .item übernimmt Breite und Scroll-Snap, Schrift etwas kleiner
+
+## Titel korrigiert und zwei Videos entfernt
+- "UGC Ad · Gartenmöbel" -> "Brand Film · Gartenmöbel" (denova, cinematischer Markenfilm)
+- "UGC Ad · Rasierer" -> "UGC Ad · Bartöl" (Produkt ist Mootes Beard Oil)
+- "UGC Ad · Gastronomie" -> "UGC Ad · Pizza" (FREDA)
+- Supplement Ad und Rausch Shampoo Ad komplett von der Seite entfernt
+  Dateien liegen in videos/_nicht-verwendet/, Originale unberührt in "Performance Ads"
+- Jetzt 7 Videos: Intro (breit) + 2 volle Reihen à 3
