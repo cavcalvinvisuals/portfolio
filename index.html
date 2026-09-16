@@ -72,8 +72,8 @@
   .missing-note { display: none; position: absolute; left: 0; right: 0; bottom: 28px; text-align: center; font-size: .85rem; color: var(--muted); padding: 0 16px; }
   .card.missing .missing-note { display: block; }
   .card.missing video { visibility: hidden; }
-  .grid-wide { display: grid; gap: 28px; margin-bottom: 28px; }
-  .grid-wide .card { aspect-ratio: 16 / 9; }
+  .item.wide { grid-column: 1 / -1; }
+  .item.wide .card { aspect-ratio: 16 / 9; }
 
   /* About */
   .about { background: var(--bg-soft); padding: 80px 0 90px; }
@@ -117,8 +117,7 @@
     .item { flex: 0 0 78%; scroll-snap-align: start; }
     .card { border-radius: 24px; }
     .caption { font-size: .95rem; }
-    .grid-wide { gap: 14px; margin-bottom: 20px; }
-    .grid-wide .card { border-radius: 24px; }
+    .item.wide { flex: 0 0 92%; align-self: center; }
     .stats { grid-template-columns: 1fr; }
     .tag { font-size: 1rem; padding: 11px 18px; }
     .cta-wrap { padding: 16px 12px 60px; }
@@ -153,8 +152,7 @@
 
   <section class="work" id="arbeiten">
     <div class="wrap">
-      <h2 class="section-title">Ausgewählte Arbeiten</h2>
-      <div class="grid-wide" id="gridWide"></div>
+      <h2 class="section-title">Meine Kundenprojekte</h2>
       <div class="grid" id="grid"></div>
     </div>
   </section>
@@ -173,7 +171,7 @@
       </div>
       <div class="stats">
         <div class="stat"><b>7+</b><span>Jahre Erfahrung</span></div>
-        <div class="stat"><b>100+</b><span>Videos geschnitten</span></div>
+        <div class="stat"><b>500+</b><span>Videos geschnitten</span></div>
         <div class="stat"><b>1</b><span>Ansprechpartner</span></div>
       </div>
     </div>
@@ -220,17 +218,17 @@ const INSTAGRAM_URL = "https://instagram.com/DEIN-PROFIL";
 // Zu jedem Video gehört ein gleichnamiges .jpg als Vorschaubild (poster).
 // Reihenfolge hier = Reihenfolge auf der Seite. Beliebig viele Zeilen möglich.
 const VIDEOS = [
-  { datei: "videos/long-form-intro.mp4",    titel: "Long-Form Intro · Personal Brand" },
   { datei: "videos/rasierer-ad.mp4",        titel: "UGC Ad · Bartöl" },
   { datei: "videos/education-reel.mp4",     titel: "Education Reel · Personal Brand" },
   { datei: "videos/clothingbrand.mp4",      titel: "Brand Film · Clothing Label" },
+  { datei: "videos/long-form-intro.mp4",    titel: "Long-Form Intro · Personal Brand" },
   { datei: "videos/moebel-ad.mp4",          titel: "Brand Film · Gartenmöbel" },
   { datei: "videos/superboncamp-edit.mp4",  titel: "Sport Edit · Muay Thai Camp" },
   { datei: "videos/pizza-ad.mp4",           titel: "UGC Ad · Pizza" },
 ];
 
-// Videos im Querformat (16:9). Die laufen als breite Karte über die volle Breite,
-// immer oberhalb des 9:16-Rasters — unabhängig von der Position in VIDEOS.
+// Videos im Querformat (16:9). Die bekommen eine breite Karte über die volle Zeile,
+// an genau der Stelle, an der sie unten in VIDEOS stehen.
 const QUERFORMAT = [
   "videos/long-form-intro.mp4",
 ];
@@ -245,7 +243,6 @@ document.querySelectorAll(".js-book").forEach(a => {
 document.getElementById("insta").href = INSTAGRAM_URL;
 
 const grid = document.getElementById("grid");
-const gridWide = document.getElementById("gridWide");
 const lb = document.getElementById("lightbox");
 const lbVideo = document.getElementById("lbVideo");
 const canHover = window.matchMedia("(hover: hover)").matches;
@@ -266,10 +263,10 @@ lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 
 VIDEOS.forEach(({ datei: file, titel }) => {
-  const item = document.createElement("div");
-  item.className = "item";
-  const card = document.createElement("div");
   const istQuer = QUERFORMAT.includes(file);
+  const item = document.createElement("div");
+  item.className = istQuer ? "item wide" : "item";
+  const card = document.createElement("div");
   card.className = "card";
   card.tabIndex = 0;
   card.setAttribute("role", "button");
@@ -303,7 +300,7 @@ VIDEOS.forEach(({ datei: file, titel }) => {
   caption.textContent = titel;
   item.appendChild(caption);
   item.appendChild(card);
-  (istQuer ? gridWide : grid).appendChild(item);
+  grid.appendChild(item);
 });
 </script>
 </body>

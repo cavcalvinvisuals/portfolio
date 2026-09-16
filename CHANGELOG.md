@@ -45,3 +45,9 @@
 - Vollbild-Icon in der Kartenecke entfernt (Klick auf die Karte öffnet weiterhin die Lightbox)
 - Überschriften stehen jetzt über dem Video statt darunter
 - Hero-Überschrift ohne Gedankenstrich: "Videos, die nicht nur gut aussehen sondern auch performen."
+
+## Weitere Anpassungen
+- Statistik: 100+ -> 500+ Videos geschnitten
+- Sektionstitel: "Ausgewählte Arbeiten" -> "Meine Kundenprojekte"
+- Querformat-Video sitzt jetzt mittig zwischen den Hochformaten (3 / breit / 3)
+  statt in einem eigenen Container darüber; .item.wide nutzt grid-column: 1 / -1
