@@ -59,3 +59,7 @@
   Clubs & Events, Motion Design
 - Tags ersetzt: Hooks & Retention, Personal Branding, Performance Ads,
   Motion Design, Brand-Look, Short-Form
+
+## Hero neu
+- Headline: "Mehr als ein Cutter."
+- Neuer Untertext zu Marke, Zeitgeist und Algorithmus ersetzt die alte Selbstvorstellung
