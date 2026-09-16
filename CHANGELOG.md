@@ -80,3 +80,4 @@
 - Entwurfstext ersetzt durch Calvins eigene Biografie (Sony Ericsson bis heute)
 - Überschrift "Hi, ich bin Calvin.", erster Satz als hervorgehobener Lead
 - Foto wird jetzt oben ausgerichtet statt zentriert, weil der Text deutlich länger ist
+- Foto scrollt am Desktop mit (position: sticky, top 110px), am Handy normal im Fluss
