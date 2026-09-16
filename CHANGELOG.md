@@ -40,3 +40,8 @@
 - Supplement Ad und Rausch Shampoo Ad komplett von der Seite entfernt
   Dateien liegen in videos/_nicht-verwendet/, Originale unberührt in "Performance Ads"
 - Jetzt 7 Videos: Intro (breit) + 2 volle Reihen à 3
+
+## Feinschliff
+- Vollbild-Icon in der Kartenecke entfernt (Klick auf die Karte öffnet weiterhin die Lightbox)
+- Überschriften stehen jetzt über dem Video statt darunter
+- Hero-Überschrift ohne Gedankenstrich: "Videos, die nicht nur gut aussehen sondern auch performen."

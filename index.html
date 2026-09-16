@@ -69,9 +69,6 @@
   .play svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
   .card:hover .play { transform: scale(1.08); }
   .card.previewing .play { opacity: 0; }
-  .expand { position: absolute; top: 18px; right: 18px; width: 60px; height: 60px; border-radius: 6px; background: rgba(13,14,19,.85); display: grid; place-items: center; border: 0; cursor: pointer; }
-  .expand svg { width: 28px; height: 28px; stroke: #fff; fill: none; stroke-width: 2; }
-  .card.missing .expand { display: none; }
   .missing-note { display: none; position: absolute; left: 0; right: 0; bottom: 28px; text-align: center; font-size: .85rem; color: var(--muted); padding: 0 16px; }
   .card.missing .missing-note { display: block; }
   .card.missing video { visibility: hidden; }
@@ -145,7 +142,7 @@
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">Video Editor · Motion Designer</p>
-      <h1>Videos, die nicht nur gut aussehen — <em>sondern performen.</em></h1>
+      <h1>Videos, die nicht nur gut aussehen <em>sondern auch performen.</em></h1>
       <p>Ich bin Calvin. Seit über 7 Jahren schneide ich Short-Form Content, der in den ersten Sekunden fesselt: UGC Ads für DTC-Brands, Personal-Brand-Content und Hooks, die hängen bleiben.</p>
       <div class="hero-actions">
         <a class="btn btn-accent js-book" href="#">Kostenloses Erstgespräch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -280,7 +277,6 @@ VIDEOS.forEach(({ datei: file, titel }) => {
   card.innerHTML = `
     <video muted playsinline loop preload="metadata" poster="${file.replace(/\.mp4$/i, ".jpg")}" src="${file}#t=0.1"></video>
     <span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-    <button class="expand" aria-label="Im Vollbild öffnen"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg></button>
     <span class="missing-note">Datei nicht gefunden: ${file}</span>`;
   const v = card.querySelector("video");
 
@@ -302,11 +298,11 @@ VIDEOS.forEach(({ datei: file, titel }) => {
       card.classList.remove("previewing");
     });
   }
-  item.appendChild(card);
   const caption = document.createElement("p");
   caption.className = "caption";
   caption.textContent = titel;
   item.appendChild(caption);
+  item.appendChild(card);
   (istQuer ? gridWide : grid).appendChild(item);
 });
 </script>
