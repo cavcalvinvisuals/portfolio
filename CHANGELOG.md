@@ -63,3 +63,8 @@
 ## Hero neu
 - Headline: "Mehr als ein Cutter."
 - Neuer Untertext zu Marke, Zeitgeist und Algorithmus ersetzt die alte Selbstvorstellung
+
+## Keywords im Hero hervorgehoben
+- Neue Klasse .hl in der Akzentfarbe (identisch mit dem Button-Orange)
+- Hervorgehoben: Editor / Zeitgeist versteht / ästhetische Videos /
+  Menschen bewegt / echte Verbindungen / Algorithmus für dich arbeiten lässt
