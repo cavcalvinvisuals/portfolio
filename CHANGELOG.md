@@ -68,3 +68,10 @@
 - Neue Klasse .hl in der Akzentfarbe (identisch mit dem Button-Orange)
 - Hervorgehoben: Editor / Zeitgeist versteht / ästhetische Videos /
   Menschen bewegt / echte Verbindungen / Algorithmus für dich arbeiten lässt
+
+## Vorstellung mit Foto
+- Neue Sektion .intro zwischen Hero und "Meine Kundenprojekte"
+- Foto aus Pictures/Berwerbungsfoto.png (8 MB PNG) auf 1000x1250 JPG optimiert (72 KB),
+  liegt als bilder/calvin.jpg; Original unberührt
+- Zweispaltig am Desktop (Foto links), einspaltig am Handy
+- Begleittext ist ein Entwurf und muss von Calvin gegengelesen werden

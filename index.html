@@ -61,6 +61,15 @@
   .hl { color: var(--accent); font-weight: 500; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 52px; }
 
+  /* Vorstellung */
+  .intro { padding: 0 0 clamp(70px, 9vw, 110px); }
+  .intro .wrap { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: clamp(32px, 5vw, 76px); align-items: center; }
+  .intro figure { border-radius: 36px; overflow: hidden; background: var(--card-empty); aspect-ratio: 4 / 5; }
+  .intro figure img { width: 100%; height: 100%; object-fit: cover; }
+  .intro h2 { font-family: var(--head); font-weight: 600; font-size: clamp(1.9rem, 3.2vw, 2.9rem); letter-spacing: -.03em; line-height: 1.1; margin-bottom: 28px; }
+  .intro p { font-size: clamp(1.02rem, 1.25vw, 1.2rem); line-height: 1.7; color: var(--muted); max-width: 40em; }
+  .intro p + p { margin-top: 20px; }
+
   /* Work */
   .work { padding: 40px 0 120px; }
   .section-title { font-family: var(--head); font-weight: 600; font-size: clamp(2.2rem, 4vw, 3.4rem); letter-spacing: -.03em; line-height: 1.05; }
@@ -118,6 +127,8 @@
     .btn-dark { padding: 10px 18px; font-size: .9rem; }
     .btn { width: 100%; justify-content: center; }
     .btn-dark { width: auto; }
+    .intro .wrap { grid-template-columns: 1fr; gap: 30px; }
+    .intro figure { max-width: 320px; }
     .grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 8px; }
     .item { flex: 0 0 78%; scroll-snap-align: start; }
     .card { border-radius: 24px; }
@@ -151,6 +162,20 @@
       <div class="hero-actions">
         <a class="btn btn-accent js-book" href="#">Kostenloses Erstgespräch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a class="btn btn-ghost" href="#arbeiten">Arbeiten ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <figure>
+        <img src="bilder/calvin.jpg" alt="Calvin Betz, Video Editor und Motion Designer" width="1000" height="1250" decoding="async">
+      </figure>
+      <div>
+        <h2>Hi, ich bin Calvin.</h2>
+        <p>Angefangen habe ich vor über sieben Jahren. Seitdem sind mehr als 500 Videos entstanden: Ads für Marken, Content für Creator, Imagefilme für Berater und Recaps von Events.</p>
+        <p>Was ich aus all dem mitgenommen habe: Ein gutes Video ist kein Selbstzweck. Es hat einen Job — verkaufen, erklären, begeistern oder einfach im Kopf bleiben. Genau daran messe ich meine Arbeit.</p>
+        <p>Bei mir hast du einen festen Ansprechpartner, vom ersten Hook bis zum finalen Export. Keine Agenturschleifen, keine wechselnden Editoren.</p>
       </div>
     </div>
   </section>
