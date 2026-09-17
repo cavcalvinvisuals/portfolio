@@ -151,3 +151,10 @@
 - Englische Übersetzung entsprechend neu, introP4 bis introP6 entfallen
 - Desktop-Stapel an die neue Textlänge angepasst (Karten 58 % statt 62 %,
   Versatz -39 % statt -36 %): Bilder 698 px, Text 697 px auf Deutsch
+
+## Schriftart auf Apple-Systemschrift
+- --head und --body nutzen jetzt den System-Stack:
+  -apple-system, BlinkMacSystemFont, SF Pro, Inter, Segoe UI
+  Auf iPhone/Mac erscheint damit die echte San Francisco, sonst Inter
+- Space Grotesk entfernt (war die markante Headline-Schrift), nur noch Inter
+  wird geladen, dafür mit Gewicht 700
