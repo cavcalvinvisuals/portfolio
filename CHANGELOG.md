@@ -178,3 +178,13 @@
 - Sichtbarer Schlusstext neu gefasst: drei Absätze zu Hook/Retention, Arbeitsweise
   und Zusammenarbeit, ersetzt die beiden bisherigen. Englische Fassung entsprechend.
   Bildstapel erneut abgestimmt: Text und Bilder jeweils 695 px in beiden Sprachen.
+
+## About-Bereich neu gefasst
+- Intro und alle fünf Bereichstexte durch Calvins neue, kürzere Fassung ersetzt
+- 12 Schlüsselbegriffe je Sprache in der Akzentfarbe hervorgehoben (Klasse .hl),
+  dafür nutzen die Absätze jetzt data-i18n-html statt data-i18n
+- Englische Fassung entsprechend neu übersetzt und hervorgehoben
+
+## Schriftgrößen im Über-mich-Text
+- Der erste Absatz ist nicht mehr größer als die übrigen: gleiche Schriftgröße
+  und Zeilenhöhe, er bleibt nur schwarz und halbfett, der Rest grau

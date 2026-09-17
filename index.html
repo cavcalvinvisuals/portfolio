@@ -103,7 +103,7 @@
   .intro h2 { font-family: var(--head); font-weight: 600; font-size: clamp(1.9rem, 3.2vw, 2.9rem); letter-spacing: -.03em; line-height: 1.1; margin-bottom: 28px; }
   .intro p { font-size: clamp(1.02rem, 1.25vw, 1.2rem); line-height: 1.7; color: var(--muted); max-width: 40em; }
   .intro p + p { margin-top: 20px; }
-  .intro .lead { color: var(--ink); font-size: clamp(1.15rem, 1.5vw, 1.4rem); font-weight: 500; line-height: 1.5; }
+  .intro .lead { color: var(--ink); font-weight: 500; }
   .intro .hallo { font-size: 1.05rem; font-weight: 600; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
   .mehr { position: relative; overflow: hidden; }
   .mehr.zu { height: 96px; }
@@ -282,27 +282,27 @@
     <div class="wrap">
       <p class="eyebrow accent normal" data-i18n="aboutEyebrow">Über mich</p>
       <h2 class="section-title" data-i18n="aboutTitel">Editing mit Performance-Hintergrund.</h2>
-      <p data-i18n="aboutIntro">Seit über 7 Jahren arbeite ich als Video-Editor in ganz unterschiedlichen Bereichen. Jeder davon hat mir etwas beigebracht, das heute in deinem Video steckt:</p>
+      <p data-i18n-html="aboutIntro"><strong class="hl">7+ Jahre Video-Editing</strong> in unterschiedlichen Branchen, und jede davon steckt heute <strong class="hl">in deinem Video</strong>.</p>
       <div class="bereiche">
         <div class="bereich">
           <h3 data-i18n="b1t">Performance Marketing</h3>
-          <p data-i18n="b1p">In einer Performance-Agentur habe ich gelernt, welche Videos messbar Ergebnisse bringen. Deshalb schneide ich datenbasiert statt nach Bauchgefühl. Für dich heißt das: mehr Klicks, mehr Leads, weniger verbranntes Werbebudget.</p>
+          <p data-i18n-html="b1p">Ich schneide <strong class="hl">nach Daten, nicht nach Bauchgefühl</strong>. Das bringt dir <strong class="hl">mehr Retention und Leads</strong> bei weniger verbranntem Budget.</p>
         </div>
         <div class="bereich">
           <h3 data-i18n="b2t">Personal Brands &amp; YouTube</h3>
-          <p data-i18n="b2p">Mit Creatorn und YouTubern habe ich gelernt, was Menschen zum Stoppen bringt und dranbleiben lässt. Deshalb sitzen meine Hooks ab dem ersten Frame. Für dich heißt das: höhere Retention, mehr Reichweite, eine Brand, die wiedererkannt wird.</p>
+          <p data-i18n-html="b2p">Ich weiß, was Leute <strong class="hl">zum Stoppen und Klicken bringt</strong>. So bekommst du <strong class="hl">mehr Reichweite</strong> und eine Brand, die man wiedererkennt.</p>
         </div>
         <div class="bereich">
           <h3 data-i18n="b3t">Business Consulting</h3>
-          <p data-i18n="b3p">Mit Beratern habe ich gelernt, komplexe Inhalte klar und glaubwürdig zu zeigen. Deshalb hebe ich die wichtigen Punkte gezielt hervor. Für dich heißt das: Zuschauer verstehen deine Botschaft und vertrauen dir.</p>
+          <p data-i18n-html="b3p">Komplexe Themen mache ich <strong class="hl">klar und glaubwürdig</strong>. Deine Zuschauer <strong class="hl">verstehen dich und vertrauen dir</strong>.</p>
         </div>
         <div class="bereich">
           <h3 data-i18n="b4t">Clubs &amp; Events</h3>
-          <p data-i18n="b4p">Bei Veranstaltungen habe ich gelernt, Stimmung und Energie einzufangen. Deshalb weiß ich, welcher Schnitt und welche Effekte zu welcher Brand passen. Für dich heißt das: Content, der sich nach dir anfühlt.</p>
+          <p data-i18n-html="b4p">Ich fange <strong class="hl">Stimmung, Energie und Emotionen</strong> ein, passend zu deiner Brand. Das ergibt <strong class="hl">Content, der sich nach dir anfühlt</strong>.</p>
         </div>
         <div class="bereich">
           <h3 data-i18n="b5t">Motion Design</h3>
-          <p data-i18n="b5p">Animationen setze ich nicht als Deko ein, sondern um deine Aussagen zu verstärken. Für dich heißt das: ein professioneller Look, der Aufmerksamkeit lenkt statt ablenkt.</p>
+          <p data-i18n-html="b5p">Animationen setze ich ein, um <strong class="hl">deine Aussage zu verstärken</strong>, nicht als Deko. Sie <strong class="hl">lenken die Aufmerksamkeit, statt abzulenken</strong>.</p>
         </div>
       </div>
       <div class="tags">
@@ -384,17 +384,17 @@ const TEXTE = {
     workTitel: "Meine Kundenprojekte",
     aboutEyebrow: "Über mich",
     aboutTitel: "Editing mit Performance-Hintergrund.",
-    aboutIntro: "Seit über 7 Jahren arbeite ich als Video-Editor in ganz unterschiedlichen Bereichen. Jeder davon hat mir etwas beigebracht, das heute in deinem Video steckt:",
+    aboutIntro: '<strong class="hl">7+ Jahre Video-Editing</strong> in unterschiedlichen Branchen, und jede davon steckt heute <strong class="hl">in deinem Video</strong>.',
     b1t: "Performance Marketing",
-    b1p: "In einer Performance-Agentur habe ich gelernt, welche Videos messbar Ergebnisse bringen. Deshalb schneide ich datenbasiert statt nach Bauchgefühl. Für dich heißt das: mehr Klicks, mehr Leads, weniger verbranntes Werbebudget.",
+    b1p: 'Ich schneide <strong class="hl">nach Daten, nicht nach Bauchgefühl</strong>. Das bringt dir <strong class="hl">mehr Retention und Leads</strong> bei weniger verbranntem Budget.',
     b2t: "Personal Brands & YouTube",
-    b2p: "Mit Creatorn und YouTubern habe ich gelernt, was Menschen zum Stoppen bringt und dranbleiben lässt. Deshalb sitzen meine Hooks ab dem ersten Frame. Für dich heißt das: höhere Retention, mehr Reichweite, eine Brand, die wiedererkannt wird.",
+    b2p: 'Ich weiß, was Leute <strong class="hl">zum Stoppen und Klicken bringt</strong>. So bekommst du <strong class="hl">mehr Reichweite</strong> und eine Brand, die man wiedererkennt.',
     b3t: "Business Consulting",
-    b3p: "Mit Beratern habe ich gelernt, komplexe Inhalte klar und glaubwürdig zu zeigen. Deshalb hebe ich die wichtigen Punkte gezielt hervor. Für dich heißt das: Zuschauer verstehen deine Botschaft und vertrauen dir.",
+    b3p: 'Komplexe Themen mache ich <strong class="hl">klar und glaubwürdig</strong>. Deine Zuschauer <strong class="hl">verstehen dich und vertrauen dir</strong>.',
     b4t: "Clubs & Events",
-    b4p: "Bei Veranstaltungen habe ich gelernt, Stimmung und Energie einzufangen. Deshalb weiß ich, welcher Schnitt und welche Effekte zu welcher Brand passen. Für dich heißt das: Content, der sich nach dir anfühlt.",
+    b4p: 'Ich fange <strong class="hl">Stimmung, Energie und Emotionen</strong> ein, passend zu deiner Brand. Das ergibt <strong class="hl">Content, der sich nach dir anfühlt</strong>.',
     b5t: "Motion Design",
-    b5p: "Animationen setze ich nicht als Deko ein, sondern um deine Aussagen zu verstärken. Für dich heißt das: ein professioneller Look, der Aufmerksamkeit lenkt statt ablenkt.",
+    b5p: 'Animationen setze ich ein, um <strong class="hl">deine Aussage zu verstärken</strong>, nicht als Deko. Sie <strong class="hl">lenken die Aufmerksamkeit, statt abzulenken</strong>.',
     tagBrandLook: "Brand-Look",
     statJahre: "Jahre Erfahrung",
     statVideos: "Videos geschnitten",
@@ -439,17 +439,17 @@ const TEXTE = {
     workTitel: "My Client Projects",
     aboutEyebrow: "About me",
     aboutTitel: "Editing with a performance background.",
-    aboutIntro: "For over 7 years I’ve worked as a video editor across very different fields. Each one taught me something that goes into your video today:",
+    aboutIntro: '<strong class="hl">7+ years of video editing</strong> across different industries, and every one of them goes <strong class="hl">into your video</strong> today.',
     b1t: "Performance Marketing",
-    b1p: "At a performance agency I learned which videos deliver measurable results. That’s why I edit based on data instead of gut feeling. For you that means more clicks, more leads and less wasted ad budget.",
+    b1p: 'I edit <strong class="hl">based on data, not gut feeling</strong>. That gets you <strong class="hl">more retention and leads</strong> while burning less budget.',
     b2t: "Personal Brands & YouTube",
-    b2p: "Working with creators and YouTubers taught me what makes people stop scrolling and keep watching. That’s why my hooks land from the very first frame. For you that means higher retention, more reach and a brand people recognise.",
+    b2p: 'I know what <strong class="hl">makes people stop and click</strong>. That gets you <strong class="hl">more reach</strong> and a brand people recognise.',
     b3t: "Business Consulting",
-    b3p: "Working with consultants taught me how to present complex content clearly and credibly. That’s why I highlight the points that matter. For you that means viewers understand your message and trust you.",
+    b3p: 'I make complex topics <strong class="hl">clear and credible</strong>. Your viewers <strong class="hl">understand you and trust you</strong>.',
     b4t: "Clubs & Events",
-    b4p: "Events taught me how to capture atmosphere and energy. That’s why I know which cuts and effects suit which brand. For you that means content that actually feels like you.",
+    b4p: 'I capture <strong class="hl">mood, energy and emotion</strong>, matched to your brand. The result is <strong class="hl">content that feels like you</strong>.',
     b5t: "Motion Design",
-    b5p: "I don’t use animation as decoration, but to reinforce what you’re saying. For you that means a professional look that directs attention instead of stealing it.",
+    b5p: 'I use animation to <strong class="hl">reinforce your message</strong>, not as decoration. It <strong class="hl">directs attention instead of stealing it</strong>.',
     tagBrandLook: "Brand Look",
     statJahre: "Years of experience",
     statVideos: "Videos edited",
