@@ -95,8 +95,8 @@
   .intro-bilder { position: sticky; top: 110px; align-self: start; display: flex; flex-direction: column; }
   .intro figure { width: 52%; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--card-empty); box-shadow: 0 16px 38px rgba(13,14,19,.16); transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
   .intro figure:nth-child(1) { z-index: 1; transform: rotate(-2.5deg); }
-  .intro figure:nth-child(2) { z-index: 2; margin-top: -33%; margin-left: 24%; transform: rotate(1.5deg); }
-  .intro figure:nth-child(3) { z-index: 3; margin-top: -33%; margin-left: 48%; transform: rotate(-1deg); }
+  .intro figure:nth-child(2) { z-index: 2; margin-top: -28%; margin-left: 24%; transform: rotate(1.5deg); }
+  .intro figure:nth-child(3) { z-index: 3; margin-top: -28%; margin-left: 48%; transform: rotate(-1deg); }
   .intro-bilder:hover figure { opacity: .55; }
   .intro figure:hover, .intro figure:focus-within { opacity: 1; z-index: 10; transform: rotate(0deg) translateY(-14px) scale(1.06); box-shadow: 0 30px 60px rgba(13,14,19,.28); }
   .intro figure img { width: 100%; height: 100%; object-fit: cover; }
@@ -264,8 +264,9 @@
           <p data-i18n="introP1">Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.</p>
         </div>
         <button class="mehr-btn" id="mehrBtn" type="button" aria-expanded="false" aria-controls="introMehr"><span data-i18n="btnMehr">Meine Geschichte lesen</span> <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-        <p class="nach-button" data-i18n="introP2">Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.</p>
-        <p data-i18n="introP3">Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.</p>
+        <p class="nach-button" data-i18n="introP2">Durch diese Erfahrungen weiß ich, was auf Social Media wirklich funktioniert: ein Hook ab dem ersten Frame, dazu Cuts, B-Roll oder Motion Design, die die Retention tragen, statt Effekt-Overload. Bei mir hat jeder Schnitt einen Grund.</p>
+        <p data-i18n="introP3">Du konzentrierst dich auf deine Ideen und dein Business, ich hole das Beste aus deinem Material raus. Hast du eine klare Vorstellung, setze ich sie genau um. Wenn nicht, denke ich selbst mit, ohne deine Brand aus den Augen zu verlieren.</p>
+        <p data-i18n="introP4">Ich arbeite effizient und langfristig und suche Kunden, die keinen Editor für nebenbei wollen, sondern einen Partner, auf den sie sich verlassen können.</p>
       </div>
     </div>
   </section>
@@ -377,8 +378,9 @@ const TEXTE = {
     btnMehr: "Meine Geschichte lesen",
     btnWeniger: "Weniger anzeigen",
     introP1: "Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.",
-    introP2: "Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.",
-    introP3: "Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.",
+    introP2: "Durch diese Erfahrungen weiß ich, was auf Social Media wirklich funktioniert: ein Hook ab dem ersten Frame, dazu Cuts, B-Roll oder Motion Design, die die Retention tragen, statt Effekt-Overload. Bei mir hat jeder Schnitt einen Grund.",
+    introP3: "Du konzentrierst dich auf deine Ideen und dein Business, ich hole das Beste aus deinem Material raus. Hast du eine klare Vorstellung, setze ich sie genau um. Wenn nicht, denke ich selbst mit, ohne deine Brand aus den Augen zu verlieren.",
+    introP4: "Ich arbeite effizient und langfristig und suche Kunden, die keinen Editor für nebenbei wollen, sondern einen Partner, auf den sie sich verlassen können.",
     workTitel: "Meine Kundenprojekte",
     aboutEyebrow: "Über mich",
     aboutTitel: "Editing mit Performance-Hintergrund.",
@@ -431,8 +433,9 @@ const TEXTE = {
     btnMehr: "Read my story",
     btnWeniger: "Show less",
     introP1: "It took me a long time to realise that this is my profession, because I lose all track of time doing it. In Zurich I started cutting videos for YouTubers, coaches, clubs and gyms. After that I went self-employed in social media, sold my own courses and learned first-hand what works there. In 2024 I put that knowledge to work in Thailand for a Muay Thai fighter, and learned everything about the algorithm and retention along the way. Since 2026 I have been working for performance ad agencies and personal brands.",
-    introP2: "Because of that background I am not an editor who only cuts. I understand what your content is about, I think along with you and I work independently. Whether you are an agency or a personal brand, that saves you an enormous amount of time and frees you up for the things that matter.",
-    introP3: "What sets me apart: I work reliably, for the long term and with real standards for quality. That is why I look for clients where exactly that kind of collaboration is possible and who share the same values.",
+    introP2: "Those experiences taught me what actually works on social media: a hook from the very first frame, plus cuts, B-roll or motion design that carry the retention, instead of effect overload. With me, every cut has a reason.",
+    introP3: "You focus on your ideas and your business while I get the best out of your material. If you have a clear vision, I carry it out exactly. If you don’t, I think it through myself, without losing sight of your brand.",
+    introP4: "I work efficiently and for the long term, and I am looking for clients who don’t want an editor on the side, but a partner they can rely on.",
     workTitel: "My Client Projects",
     aboutEyebrow: "About me",
     aboutTitel: "Editing with a performance background.",

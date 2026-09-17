@@ -175,3 +175,6 @@
 - Korrektur: "Durch diese Erfahrung ..." ist jetzt ebenfalls immer sichtbar.
   Eingeklappt bleibt nur noch der Werdegang von Zürich bis 2026.
   Bildstapel entsprechend neu abgestimmt (Text 643, Bilder 645 px, beide Sprachen).
+- Sichtbarer Schlusstext neu gefasst: drei Absätze zu Hook/Retention, Arbeitsweise
+  und Zusammenarbeit, ersetzt die beiden bisherigen. Englische Fassung entsprechend.
+  Bildstapel erneut abgestimmt: Text und Bilder jeweils 695 px in beiden Sprachen.
