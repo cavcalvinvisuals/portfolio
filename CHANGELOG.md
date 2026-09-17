@@ -190,3 +190,5 @@
   und Zeilenhöhe, er bleibt nur schwarz und halbfett, der Rest grau
 - Der erste Absatz ist jetzt grau und normal gewichtet wie die übrigen Absätze;
   die Überschrift ist ausdrücklich auf Textschwarz gesetzt
+- Die drei Abschlussabsätze unter dem Button stehen in Textschwarz wie die Überschriften;
+  der Werdegang im aufklappbaren Teil und der Einstiegsabsatz bleiben grau
