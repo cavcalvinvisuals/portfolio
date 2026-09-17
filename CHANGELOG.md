@@ -139,7 +139,6 @@
 - Korrektur: der Fächer nebeneinander gilt jetzt ab 1000 px abwärts statt erst ab 680 px.
   Auf Tablets (etwa 768 px) griff vorher noch das Desktop-Layout mit übergroßen
   Bildern und einer sehr schmalen Textspalte.
-- Handy (bis 680 px): zurück zu den Bildern untereinander in voller Breite.
-  Der Fächer funktionierte dort nicht: bei 375 px sind die Karten nur noch ~180 px
-  breit, überlappen sich zur Hälfte und ohne Mauszeiger lässt sich kein Bild
-  nach vorne holen. Der Fächer bleibt für Tablets (681-1000 px).
+- Handy und Tablet zeigen beide den Fächer von links nach rechts.
+  Auf dem Handy mit weniger Überlappung (Karten 42 % breit, 13 % Versatz statt
+  50 / 25), damit von jedem Bild genug sichtbar bleibt.
