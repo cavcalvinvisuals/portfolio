@@ -130,3 +130,9 @@
 - Nebeneinander ist die Gruppe nur noch 365 px hoch statt 1390 px, deshalb
   funktioniert das Mitscrollen wieder (434 px Spielraum)
 - prefers-reduced-motion: keine Drehung, geringere Überlappung
+
+## Desktop: Stapel statt Fächer
+- Am Desktop liegen die Karten jetzt treppenförmig untereinander statt nebeneinander,
+  jede um 19 % nach rechts und 36 % nach oben versetzt, leicht gedreht
+- Gruppenhöhe 803 px bei 812 px Text, läuft also parallel zum Text aus
+- Die mobile Ansicht bleibt der Fächer nebeneinander, unverändert
