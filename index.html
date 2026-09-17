@@ -92,7 +92,9 @@
   /* Vorstellung */
   .intro { padding: 0 0 clamp(70px, 9vw, 110px); }
   .intro .wrap { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: clamp(32px, 5vw, 76px); align-items: start; }
-  .intro figure { border-radius: 36px; overflow: hidden; background: var(--card-empty); aspect-ratio: 4 / 5; position: sticky; top: 110px; align-self: start; }
+  .intro-bilder { position: sticky; top: 110px; align-self: start; display: grid; gap: 20px; }
+  .intro-bilder figure:last-child { width: 66%; margin-left: auto; border-radius: 28px; }
+  .intro figure { border-radius: 36px; overflow: hidden; background: var(--card-empty); aspect-ratio: 4 / 5; }
   .intro figure img { width: 100%; height: 100%; object-fit: cover; }
   .intro h2 { font-family: var(--head); font-weight: 600; font-size: clamp(1.9rem, 3.2vw, 2.9rem); letter-spacing: -.03em; line-height: 1.1; margin-bottom: 28px; }
   .intro p { font-size: clamp(1.02rem, 1.25vw, 1.2rem); line-height: 1.7; color: var(--muted); max-width: 40em; }
@@ -174,7 +176,8 @@
     .btn { width: 100%; justify-content: center; }
     .btn-dark { width: auto; }
     .intro .wrap { grid-template-columns: 1fr; gap: 30px; }
-    .intro figure { max-width: 320px; position: static; }
+    .intro-bilder { position: static; gap: 14px; max-width: 320px; }
+    .intro-bilder figure:last-child { width: 78%; border-radius: 22px; }
     .grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 8px; }
     .item { flex: 0 0 78%; scroll-snap-align: start; }
     .card { border-radius: 24px; }
@@ -221,9 +224,14 @@
 
   <section class="intro">
     <div class="wrap">
-      <figure>
-        <img src="bilder/calvin.jpg" alt="Calvin Betz, Video Editor und Motion Designer" data-i18n-alt="fotoAlt" width="1000" height="1250" decoding="async">
-      </figure>
+      <div class="intro-bilder">
+        <figure>
+          <img src="bilder/calvin.jpg" alt="Calvin Betz, Video Editor und Motion Designer" data-i18n-alt="fotoAlt" width="1000" height="1250" decoding="async">
+        </figure>
+        <figure>
+          <img src="bilder/calvin-2.jpg" alt="Calvin Betz mit Kamera bei einem Dreh" data-i18n-alt="fotoAlt2" width="1000" height="1250" decoding="async">
+        </figure>
+      </div>
       <div>
         <h2 data-i18n="introTitel">Hi, ich bin Calvin.</h2>
         <p class="lead" data-i18n="introLead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.</p>
@@ -376,6 +384,7 @@ const TEXTE = {
     popupOeffnen: "Im Mail-Programm öffnen",
     mailBetreff: "Anfrage über dein Portfolio",
     fotoAlt: "Calvin Betz, Video Editor und Motion Designer",
+    fotoAlt2: "Calvin Betz mit Kamera bei einem Dreh",
     ariaSchliessen: "Schließen",
     ariaVideoAnsehen: "Video ansehen",
     ariaVideoAbspielen: "Video abspielen",
@@ -428,6 +437,7 @@ const TEXTE = {
     popupOeffnen: "Open in mail app",
     mailBetreff: "Enquiry via your portfolio",
     fotoAlt: "Calvin Betz, video editor and motion designer",
+    fotoAlt2: "Calvin Betz with a camera on a shoot",
     ariaSchliessen: "Close",
     ariaVideoAnsehen: "Watch video",
     ariaVideoAbspielen: "Play video",

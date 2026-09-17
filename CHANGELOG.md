@@ -104,3 +104,10 @@
 - Auswahl wird in localStorage gespeichert, URL wird per replaceState angepasst
 - Mobile Navigation verdichtet, damit Logo, Umschalter und Button nebeneinander passen
 - Englischer Hero-Text auf Wunsch: "what's trending right now" statt "zeitgeist"
+
+## Zweites Foto in der Vorstellung
+- IMG_3880.HEIC (2,3 MB) nach bilder/calvin-2.jpg konvertiert (1000x1250, 250 KB)
+  HEIC braucht zwei ffmpeg-Schritte, direkte Filter schlagen fehl
+- Beide Fotos liegen jetzt in .intro-bilder, dieser Wrapper ist sticky
+- Zweites Foto auf 66 % Breite und rechtsbündig, damit die Bildspalte kürzer
+  bleibt als der Text und das Mitscrollen überhaupt Spielraum hat
