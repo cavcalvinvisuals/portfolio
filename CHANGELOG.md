@@ -139,6 +139,9 @@
 - Korrektur: der Fächer nebeneinander gilt jetzt ab 1000 px abwärts statt erst ab 680 px.
   Auf Tablets (etwa 768 px) griff vorher noch das Desktop-Layout mit übergroßen
   Bildern und einer sehr schmalen Textspalte.
-- Handy und Tablet zeigen beide den Fächer von links nach rechts.
-  Auf dem Handy mit weniger Überlappung (Karten 42 % breit, 13 % Versatz statt
-  50 / 25), damit von jedem Bild genug sichtbar bleibt.
+- Handy und Tablet zeigen beide den Fächer von links nach rechts, mit exakt den
+  Werten der ersten Fächer-Fassung (Karten 50 % breit, 25 % Versatz).
+- Fehler behoben: Der Desktop-Stapel setzt für Karte 2 und 3 ein margin-top: -36%.
+  In den Handy- und Tablet-Regeln war das nur allgemein zurückgesetzt, nicht pro
+  Karte; da nth-child spezifischer ist, blieb der Wert aktiv und zog Karte 2 und 3
+  nach oben, sodass Karte 1 durchzuhängen schien.
