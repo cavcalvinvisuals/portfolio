@@ -81,3 +81,13 @@
 - Überschrift "Hi, ich bin Calvin.", erster Satz als hervorgehobener Lead
 - Foto wird jetzt oben ausgerichtet statt zentriert, weil der Text deutlich länger ist
 - Foto scrollt am Desktop mit (position: sticky, top 110px), am Handy normal im Fluss
+
+## Kontakt per E-Mail statt Calendly
+- CALENDLY_URL entfernt, neu: EMAIL + MAIL_BETREFF
+- Alle drei Buttons (Nav, Hero, CTA) heißen "E-Mail schreiben" und öffnen das Popup
+- Dunkler Abschluss: grüner Statuspunkt "Offen für eine feste Zusammenarbeit",
+  Headline "Du suchst einen Video Editor für dein Team?", 24-Stunden-Zusage
+- Neues Popup (.mailbox) im hellen Seitendesign: Adresse, Kopieren-Button mit
+  "Kopiert"-Rückmeldung, mailto-Link mit Betreff "Anfrage über dein Portfolio"
+- Schließt per X, Klick daneben und Esc; Fokus springt beim Öffnen auf "Kopieren"
+  und beim Schließen zurück auf den auslösenden Button

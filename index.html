@@ -107,6 +107,20 @@
   .cta h2 { font-family: var(--head); font-weight: 600; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.12; letter-spacing: -.03em; max-width: 11ch; margin: 0 auto; }
   .cta p { color: #B5B9C2; font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.65; max-width: 30em; margin: 32px auto 48px; }
 
+  .cta .status { display: inline-flex; align-items: center; gap: 10px; font-size: .95rem; color: #B5B9C2; margin-bottom: 30px; }
+  .cta .status i { width: 9px; height: 9px; border-radius: 50%; background: #3FCF6E; flex: none; }
+
+  /* Mail-Popup */
+  .mailbox { position: fixed; inset: 0; z-index: 110; background: rgba(13,14,19,.6); display: none; align-items: center; justify-content: center; padding: 24px; }
+  .mailbox.open { display: flex; }
+  .mailbox .box { position: relative; width: 100%; max-width: 520px; background: var(--bg); border: 1px solid var(--line); border-radius: 36px; padding: clamp(40px, 5vw, 56px) clamp(24px, 4vw, 48px); text-align: center; }
+  .mailbox h3 { font-family: var(--head); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.1rem); letter-spacing: -.025em; line-height: 1.15; }
+  .mailbox .adresse { display: block; margin: 26px 0 32px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 500; color: var(--ink); word-break: break-all; }
+  .mailbox .aktionen { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .mailbox .aktionen .btn { font-size: 1rem; padding: 15px 28px; }
+  .mailbox .close { position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+  .mailbox .close:hover { border-color: var(--ink); }
+
   /* Footer */
   footer { border-top: 1px solid var(--line); }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; padding-bottom: 28px; color: var(--muted); font-size: .95rem; }
@@ -150,7 +164,7 @@
 <header class="nav">
   <div class="wrap">
     <a href="#top" class="logo">CavCalvin<span>.</span>Visuals</a>
-    <a class="btn btn-dark js-book" href="#">Erstgespräch buchen</a>
+    <button class="btn btn-dark js-mail" type="button">E-Mail schreiben</button>
   </div>
 </header>
 
@@ -161,7 +175,7 @@
       <h1>Mehr als ein Cutter.</h1>
       <p>Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.</p>
       <div class="hero-actions">
-        <a class="btn btn-accent js-book" href="#">Kostenloses Erstgespräch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="btn btn-accent js-mail" type="button">E-Mail schreiben <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
         <a class="btn btn-ghost" href="#arbeiten">Arbeiten ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
       </div>
     </div>
@@ -237,9 +251,10 @@
 
   <section class="cta-wrap" id="kontakt">
     <div class="cta">
-      <h2>Lass uns dein nächstes Video machen.</h2>
-      <p>Erzähl mir in einem kostenlosen Erstgespräch von deinem Projekt — unverbindlich und ohne Blabla.</p>
-      <a class="btn btn-accent js-book" href="#">Kostenloses Erstgespräch buchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <p class="status"><i></i>Offen für eine feste Zusammenarbeit</p>
+      <h2>Du suchst einen Video Editor für dein Team?</h2>
+      <p>Schreib mir eine kurze Nachricht, ich melde mich innerhalb von 24 Stunden.</p>
+      <button class="btn btn-accent js-mail" type="button">E-Mail schreiben <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
     </div>
   </section>
 </main>
@@ -255,6 +270,18 @@
   </div>
 </footer>
 
+<div class="mailbox" id="mailbox" role="dialog" aria-modal="true" aria-labelledby="mailboxTitel">
+  <div class="box">
+    <button class="close" id="mailClose" aria-label="Schließen">×</button>
+    <h3 id="mailboxTitel">Schreib mir</h3>
+    <span class="adresse" id="mailAdresse"></span>
+    <div class="aktionen">
+      <button class="btn btn-accent" id="mailCopy" type="button">Kopieren</button>
+      <a class="btn btn-ghost" id="mailOpen" href="#">Im Mail-Programm öffnen</a>
+    </div>
+  </div>
+</div>
+
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Video ansehen">
   <button class="close" id="lbClose" aria-label="Schließen">×</button>
   <video id="lbVideo" controls playsinline></video>
@@ -265,8 +292,9 @@
    HIER ANPASSEN
    ========================================================= */
 
-// Dein Calendly-Link (alle "Erstgespräch"-Buttons nutzen ihn)
-const CALENDLY_URL = "https://calendly.com/cavcalvinvisuals/30min";
+// Deine E-Mail-Adresse (alle "E-Mail schreiben"-Buttons öffnen damit das Popup)
+const EMAIL = "cavcalvinvisuals@gmail.com";
+const MAIL_BETREFF = "Anfrage über dein Portfolio";
 
 // Dein Instagram-Profil
 const INSTAGRAM_URL = "https://instagram.com/DEIN-PROFIL";
@@ -293,10 +321,46 @@ const QUERFORMAT = [
 
 /* ========================================================= */
 
-document.querySelectorAll(".js-book").forEach(a => {
-  a.href = CALENDLY_URL;
-  a.target = "_blank";
-  a.rel = "noopener";
+const mailbox = document.getElementById("mailbox");
+const mailCopy = document.getElementById("mailCopy");
+const mailOpen = document.getElementById("mailOpen");
+let fokusVorher = null;
+
+document.getElementById("mailAdresse").textContent = EMAIL;
+mailOpen.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(MAIL_BETREFF);
+
+function openMailbox() {
+  fokusVorher = document.activeElement;
+  mailbox.classList.add("open");
+  mailCopy.focus();
+}
+function closeMailbox() {
+  if (!mailbox.classList.contains("open")) return;
+  mailbox.classList.remove("open");
+  mailCopy.textContent = "Kopieren";
+  if (fokusVorher) fokusVorher.focus();
+}
+document.querySelectorAll(".js-mail").forEach(b => b.addEventListener("click", openMailbox));
+document.getElementById("mailClose").addEventListener("click", closeMailbox);
+mailbox.addEventListener("click", e => { if (e.target === mailbox) closeMailbox(); });
+
+mailCopy.addEventListener("click", async () => {
+  let ok = true;
+  try {
+    await navigator.clipboard.writeText(EMAIL);
+  } catch (err) {
+    const feld = document.createElement("textarea");
+    feld.value = EMAIL;
+    feld.setAttribute("readonly", "");
+    feld.style.position = "fixed";
+    feld.style.opacity = "0";
+    document.body.appendChild(feld);
+    feld.select();
+    try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
+    feld.remove();
+  }
+  mailCopy.textContent = ok ? "Kopiert" : "Bitte manuell kopieren";
+  setTimeout(() => { mailCopy.textContent = "Kopieren"; }, 1800);
 });
 document.getElementById("insta").href = INSTAGRAM_URL;
 
@@ -318,7 +382,7 @@ function closeLightbox() {
 }
 document.getElementById("lbClose").addEventListener("click", closeLightbox);
 lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeLightbox(); closeMailbox(); } });
 
 VIDEOS.forEach(({ datei: file, titel }) => {
   const istQuer = QUERFORMAT.includes(file);
