@@ -3,8 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Sprache festlegen, bevor irgendetwas gezeichnet wird */
+(function () {
+  var wunsch = null;
+  try { wunsch = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (wunsch !== "de" && wunsch !== "en") {
+    try { wunsch = localStorage.getItem("lang"); } catch (e) { wunsch = null; }
+  }
+  if (wunsch !== "de" && wunsch !== "en") {
+    var b = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+    wunsch = b.indexOf("de") === 0 ? "de" : "en";
+  }
+  window.SPRACHE = wunsch;
+  document.documentElement.lang = wunsch;
+  /* Das Markup ist deutsch. Nur für Englisch kurz verbergen, bis übersetzt ist. */
+  if (wunsch === "en") {
+    document.documentElement.style.visibility = "hidden";
+    /* Notbremse: falls das Uebersetzen scheitert, wird die Seite trotzdem sichtbar */
+    setTimeout(function () { document.documentElement.style.visibility = ""; }, 1200);
+  }
+})();
+</script>
+<noscript><style>html { visibility: visible !important; }</style></noscript>
 <title>CavCalvin Visuals – Video Editor & Motion Designer</title>
-<meta name="description" content="Short-Form Videos, die performen: UGC Ads, Personal-Brand-Content und Hooks von Calvin Betz.">
+<meta name="description" id="metaBeschreibung" content="Short-Form Videos, die performen: UGC Ads, Personal-Brand-Content und Hooks von Calvin Betz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -46,6 +69,11 @@
   .nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 82px; }
   .logo { font-family: var(--body); font-weight: 600; font-size: 1.2rem; letter-spacing: -.01em; }
   .logo span { color: var(--accent); }
+  .nav-rechts { display: flex; align-items: center; gap: clamp(14px, 2vw, 24px); }
+  .lang { display: flex; align-items: center; gap: 7px; font-size: .85rem; font-weight: 600; letter-spacing: .06em; color: var(--muted); }
+  .lang button { border: 0; background: none; padding: 4px 2px; font: inherit; letter-spacing: inherit; color: var(--muted); cursor: pointer; transition: color .2s; }
+  .lang button:hover { color: var(--ink); }
+  .lang button[aria-current="true"] { color: var(--ink); }
 
   /* Hero */
   .hero { padding: clamp(80px, 13vh, 150px) 0 clamp(80px, 12vh, 140px); }
@@ -138,8 +166,11 @@
     .grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 680px) {
-    .nav .wrap { height: 68px; }
-    .btn-dark { padding: 10px 18px; font-size: .9rem; }
+    .nav .wrap { height: 68px; gap: 8px; padding-left: 16px; padding-right: 16px; }
+    .logo { font-size: .9rem; }
+    .nav-rechts { gap: 9px; }
+    .lang { font-size: .7rem; gap: 3px; letter-spacing: .03em; }
+    .btn-dark { padding: 8px 12px; font-size: .78rem; white-space: nowrap; }
     .btn { width: 100%; justify-content: center; }
     .btn-dark { width: auto; }
     .intro .wrap { grid-template-columns: 1fr; gap: 30px; }
@@ -164,19 +195,26 @@
 <header class="nav">
   <div class="wrap">
     <a href="#top" class="logo">CavCalvin<span>.</span>Visuals</a>
-    <button class="btn btn-dark js-mail" type="button">E-Mail schreiben</button>
+    <div class="nav-rechts">
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" class="js-lang" data-lang="de">DE</button>
+        <span aria-hidden="true">|</span>
+        <button type="button" class="js-lang" data-lang="en">EN</button>
+      </div>
+      <button class="btn btn-dark js-mail" type="button" data-i18n="btnMail">E-Mail schreiben</button>
+    </div>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Video Editor · Motion Designer</p>
-      <h1>Mehr als ein Cutter.</h1>
-      <p>Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.</p>
+      <p class="eyebrow" data-i18n="heroEyebrow">Video Editor · Motion Designer</p>
+      <h1 data-i18n="heroTitel">Mehr als ein Cutter.</h1>
+      <p data-i18n-html="heroText">Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.</p>
       <div class="hero-actions">
-        <button class="btn btn-accent js-mail" type="button">E-Mail schreiben <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
-        <a class="btn btn-ghost" href="#arbeiten">Arbeiten ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <button class="btn btn-accent js-mail" type="button"><span data-i18n="btnMail">E-Mail schreiben</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+        <a class="btn btn-ghost" href="#arbeiten"><span data-i18n="btnArbeiten">Arbeiten ansehen</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
       </div>
     </div>
   </section>
@@ -184,53 +222,53 @@
   <section class="intro">
     <div class="wrap">
       <figure>
-        <img src="bilder/calvin.jpg" alt="Calvin Betz, Video Editor und Motion Designer" width="1000" height="1250" decoding="async">
+        <img src="bilder/calvin.jpg" alt="Calvin Betz, Video Editor und Motion Designer" data-i18n-alt="fotoAlt" width="1000" height="1250" decoding="async">
       </figure>
       <div>
-        <h2>Hi, ich bin Calvin.</h2>
-        <p class="lead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.</p>
-        <p>Als Kind habe ich Playmobilfiguren mit Stop-Motion zum Leben erweckt. Ich habe sie Bild für Bild bewegt. Mit 13 bekam ich meinen ersten Camcorder. Ich filmte Urlaubsvideos für meine Familie und bearbeitete sie mit Windows Movie Maker.</p>
-        <p>Erst viel später wurde mir klar, dass genau das mein Beruf ist. Es ist etwas, das ich den ganzen Tag gerne mache. Dabei verliere ich das Zeitgefühl. In Zürich habe ich meine ersten Videos für YouTuberinnen, Clubs, Coaches, Berater und Fitnessstudios geschnitten.</p>
-        <p>Danach habe ich selbstständig im Social-Media-Vertrieb gearbeitet. Über meinen eigenen Instagram-Account habe ich mit Stories und meiner Persönlichkeit mein erstes Geschäft aufgebaut.</p>
-        <p>2024 bin ich nach Thailand gegangen. Dort habe ich den Social-Media-Auftritt eines Profi-Muay-Thai-Kämpfers aufgebaut. Ich habe den Algorithmus und die Analytics richtig verstanden. Außerdem habe ich gelernt, Videos gezielt zu optimieren.</p>
-        <p>Seit 2026 arbeite ich für Performance-Ad-Agenturen in der Schweiz und in Deutschland. Ich unterstütze auch Personal Brands aus Unternehmensberatung und Coaching.</p>
-        <p>Was mich auszeichnet: Ich arbeite langfristig. Ich bin verlässlich und lege Wert auf Qualität. Deshalb suche ich Kunden, die diese Werte teilen und einen Partner wollen, der ihre Marke über einen längeren Zeitraum mit aufbaut.</p>
+        <h2 data-i18n="introTitel">Hi, ich bin Calvin.</h2>
+        <p class="lead" data-i18n="introLead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.</p>
+        <p data-i18n="introP1">Als Kind habe ich Playmobilfiguren mit Stop-Motion zum Leben erweckt. Ich habe sie Bild für Bild bewegt. Mit 13 bekam ich meinen ersten Camcorder. Ich filmte Urlaubsvideos für meine Familie und bearbeitete sie mit Windows Movie Maker.</p>
+        <p data-i18n="introP2">Erst viel später wurde mir klar, dass genau das mein Beruf ist. Es ist etwas, das ich den ganzen Tag gerne mache. Dabei verliere ich das Zeitgefühl. In Zürich habe ich meine ersten Videos für YouTuberinnen, Clubs, Coaches, Berater und Fitnessstudios geschnitten.</p>
+        <p data-i18n="introP3">Danach habe ich selbstständig im Social-Media-Vertrieb gearbeitet. Über meinen eigenen Instagram-Account habe ich mit Stories und meiner Persönlichkeit mein erstes Geschäft aufgebaut.</p>
+        <p data-i18n="introP4">2024 bin ich nach Thailand gegangen. Dort habe ich den Social-Media-Auftritt eines Profi-Muay-Thai-Kämpfers aufgebaut. Ich habe den Algorithmus und die Analytics richtig verstanden. Außerdem habe ich gelernt, Videos gezielt zu optimieren.</p>
+        <p data-i18n="introP5">Seit 2026 arbeite ich für Performance-Ad-Agenturen in der Schweiz und in Deutschland. Ich unterstütze auch Personal Brands aus Unternehmensberatung und Coaching.</p>
+        <p data-i18n="introP6">Was mich auszeichnet: Ich arbeite langfristig. Ich bin verlässlich und lege Wert auf Qualität. Deshalb suche ich Kunden, die diese Werte teilen und einen Partner wollen, der ihre Marke über einen längeren Zeitraum mit aufbaut.</p>
       </div>
     </div>
   </section>
 
   <section class="work" id="arbeiten">
     <div class="wrap">
-      <h2 class="section-title">Meine Kundenprojekte</h2>
+      <h2 class="section-title" data-i18n="workTitel">Meine Kundenprojekte</h2>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
   <section class="about">
     <div class="wrap">
-      <p class="eyebrow accent normal">Über mich</p>
-      <h2 class="section-title">Editing mit Performance-Hintergrund.</h2>
-      <p>Seit über 7 Jahren arbeite ich als Video-Editor in ganz unterschiedlichen Bereichen. Jeder davon hat mir etwas beigebracht, das heute in deinem Video steckt:</p>
+      <p class="eyebrow accent normal" data-i18n="aboutEyebrow">Über mich</p>
+      <h2 class="section-title" data-i18n="aboutTitel">Editing mit Performance-Hintergrund.</h2>
+      <p data-i18n="aboutIntro">Seit über 7 Jahren arbeite ich als Video-Editor in ganz unterschiedlichen Bereichen. Jeder davon hat mir etwas beigebracht, das heute in deinem Video steckt:</p>
       <div class="bereiche">
         <div class="bereich">
-          <h3>Performance Marketing</h3>
-          <p>In einer Performance-Agentur habe ich gelernt, welche Videos messbar Ergebnisse bringen. Deshalb schneide ich datenbasiert statt nach Bauchgefühl. Für dich heißt das: mehr Klicks, mehr Leads, weniger verbranntes Werbebudget.</p>
+          <h3 data-i18n="b1t">Performance Marketing</h3>
+          <p data-i18n="b1p">In einer Performance-Agentur habe ich gelernt, welche Videos messbar Ergebnisse bringen. Deshalb schneide ich datenbasiert statt nach Bauchgefühl. Für dich heißt das: mehr Klicks, mehr Leads, weniger verbranntes Werbebudget.</p>
         </div>
         <div class="bereich">
-          <h3>Personal Brands &amp; YouTube</h3>
-          <p>Mit Creatorn und YouTubern habe ich gelernt, was Menschen zum Stoppen bringt und dranbleiben lässt. Deshalb sitzen meine Hooks ab dem ersten Frame. Für dich heißt das: höhere Retention, mehr Reichweite, eine Brand, die wiedererkannt wird.</p>
+          <h3 data-i18n="b2t">Personal Brands &amp; YouTube</h3>
+          <p data-i18n="b2p">Mit Creatorn und YouTubern habe ich gelernt, was Menschen zum Stoppen bringt und dranbleiben lässt. Deshalb sitzen meine Hooks ab dem ersten Frame. Für dich heißt das: höhere Retention, mehr Reichweite, eine Brand, die wiedererkannt wird.</p>
         </div>
         <div class="bereich">
-          <h3>Business Consulting</h3>
-          <p>Mit Beratern habe ich gelernt, komplexe Inhalte klar und glaubwürdig zu zeigen. Deshalb hebe ich die wichtigen Punkte gezielt hervor. Für dich heißt das: Zuschauer verstehen deine Botschaft und vertrauen dir.</p>
+          <h3 data-i18n="b3t">Business Consulting</h3>
+          <p data-i18n="b3p">Mit Beratern habe ich gelernt, komplexe Inhalte klar und glaubwürdig zu zeigen. Deshalb hebe ich die wichtigen Punkte gezielt hervor. Für dich heißt das: Zuschauer verstehen deine Botschaft und vertrauen dir.</p>
         </div>
         <div class="bereich">
-          <h3>Clubs &amp; Events</h3>
-          <p>Bei Veranstaltungen habe ich gelernt, Stimmung und Energie einzufangen. Deshalb weiß ich, welcher Schnitt und welche Effekte zu welcher Brand passen. Für dich heißt das: Content, der sich nach dir anfühlt.</p>
+          <h3 data-i18n="b4t">Clubs &amp; Events</h3>
+          <p data-i18n="b4p">Bei Veranstaltungen habe ich gelernt, Stimmung und Energie einzufangen. Deshalb weiß ich, welcher Schnitt und welche Effekte zu welcher Brand passen. Für dich heißt das: Content, der sich nach dir anfühlt.</p>
         </div>
         <div class="bereich">
-          <h3>Motion Design</h3>
-          <p>Animationen setze ich nicht als Deko ein, sondern um deine Aussagen zu verstärken. Für dich heißt das: ein professioneller Look, der Aufmerksamkeit lenkt statt ablenkt.</p>
+          <h3 data-i18n="b5t">Motion Design</h3>
+          <p data-i18n="b5p">Animationen setze ich nicht als Deko ein, sondern um deine Aussagen zu verstärken. Für dich heißt das: ein professioneller Look, der Aufmerksamkeit lenkt statt ablenkt.</p>
         </div>
       </div>
       <div class="tags">
@@ -238,23 +276,23 @@
         <span class="tag">Personal Branding</span>
         <span class="tag">Performance Ads</span>
         <span class="tag">Motion Design</span>
-        <span class="tag">Brand-Look</span>
+        <span class="tag" data-i18n="tagBrandLook">Brand-Look</span>
         <span class="tag">Short-Form</span>
       </div>
       <div class="stats">
-        <div class="stat"><b>7+</b><span>Jahre Erfahrung</span></div>
-        <div class="stat"><b>500+</b><span>Videos geschnitten</span></div>
-        <div class="stat"><b>1</b><span>Ansprechpartner</span></div>
+        <div class="stat"><b>7+</b><span data-i18n="statJahre">Jahre Erfahrung</span></div>
+        <div class="stat"><b>500+</b><span data-i18n="statVideos">Videos geschnitten</span></div>
+        <div class="stat"><b>1</b><span data-i18n="statKontakt">Ansprechpartner</span></div>
       </div>
     </div>
   </section>
 
   <section class="cta-wrap" id="kontakt">
     <div class="cta">
-      <p class="status"><i></i>Offen für eine feste Zusammenarbeit</p>
-      <h2>Du suchst einen Video Editor für dein Team?</h2>
-      <p>Schreib mir eine kurze Nachricht, ich melde mich innerhalb von 24 Stunden.</p>
-      <button class="btn btn-accent js-mail" type="button">E-Mail schreiben <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
+      <p class="status"><i></i><span data-i18n="ctaStatus">Offen für eine feste Zusammenarbeit</span></p>
+      <h2 data-i18n="ctaTitel">Du suchst einen Video Editor für dein Team?</h2>
+      <p data-i18n="ctaText">Schreib mir eine kurze Nachricht, ich melde mich innerhalb von 24 Stunden.</p>
+      <button class="btn btn-accent js-mail" type="button"><span data-i18n="btnMail">E-Mail schreiben</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></button>
     </div>
   </section>
 </main>
@@ -264,37 +302,150 @@
     <span>© 2026 CavCalvin Visuals</span>
     <nav>
       <a href="#" id="insta" target="_blank" rel="noopener">Instagram</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html" data-i18n="fImpressum">Impressum</a>
+      <a href="datenschutz.html" data-i18n="fDatenschutz">Datenschutz</a>
     </nav>
   </div>
 </footer>
 
 <div class="mailbox" id="mailbox" role="dialog" aria-modal="true" aria-labelledby="mailboxTitel">
   <div class="box">
-    <button class="close" id="mailClose" aria-label="Schließen">×</button>
-    <h3 id="mailboxTitel">Schreib mir</h3>
+    <button class="close" id="mailClose" aria-label="Schließen" data-i18n-aria="ariaSchliessen">×</button>
+    <h3 id="mailboxTitel" data-i18n="popupTitel">Schreib mir</h3>
     <span class="adresse" id="mailAdresse"></span>
     <div class="aktionen">
       <button class="btn btn-accent" id="mailCopy" type="button">Kopieren</button>
-      <a class="btn btn-ghost" id="mailOpen" href="#">Im Mail-Programm öffnen</a>
+      <a class="btn btn-ghost" id="mailOpen" href="#" data-i18n="popupOeffnen">Im Mail-Programm öffnen</a>
     </div>
   </div>
 </div>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Video ansehen">
-  <button class="close" id="lbClose" aria-label="Schließen">×</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Video ansehen" data-i18n-aria="ariaVideoAnsehen">
+  <button class="close" id="lbClose" aria-label="Schließen" data-i18n-aria="ariaSchliessen">×</button>
   <video id="lbVideo" controls playsinline></video>
 </div>
 
 <script>
+/* =========================================================
+   SPRACHEN  (Deutsch ist die Grundfassung im Markup)
+   ========================================================= */
+const TEXTE = {
+  de: {
+    titel: "CavCalvin Visuals – Video Editor & Motion Designer",
+    beschreibung: "Short-Form Videos, die performen: UGC Ads, Personal-Brand-Content und Hooks von Calvin Betz.",
+    btnMail: "E-Mail schreiben",
+    btnArbeiten: "Arbeiten ansehen",
+    heroEyebrow: "Video Editor · Motion Designer",
+    heroTitel: "Mehr als ein Cutter.",
+    heroText: 'Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.',
+    introTitel: "Hi, ich bin Calvin.",
+    introLead: "Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.",
+    introP1: "Als Kind habe ich Playmobilfiguren mit Stop-Motion zum Leben erweckt. Ich habe sie Bild für Bild bewegt. Mit 13 bekam ich meinen ersten Camcorder. Ich filmte Urlaubsvideos für meine Familie und bearbeitete sie mit Windows Movie Maker.",
+    introP2: "Erst viel später wurde mir klar, dass genau das mein Beruf ist. Es ist etwas, das ich den ganzen Tag gerne mache. Dabei verliere ich das Zeitgefühl. In Zürich habe ich meine ersten Videos für YouTuberinnen, Clubs, Coaches, Berater und Fitnessstudios geschnitten.",
+    introP3: "Danach habe ich selbstständig im Social-Media-Vertrieb gearbeitet. Über meinen eigenen Instagram-Account habe ich mit Stories und meiner Persönlichkeit mein erstes Geschäft aufgebaut.",
+    introP4: "2024 bin ich nach Thailand gegangen. Dort habe ich den Social-Media-Auftritt eines Profi-Muay-Thai-Kämpfers aufgebaut. Ich habe den Algorithmus und die Analytics richtig verstanden. Außerdem habe ich gelernt, Videos gezielt zu optimieren.",
+    introP5: "Seit 2026 arbeite ich für Performance-Ad-Agenturen in der Schweiz und in Deutschland. Ich unterstütze auch Personal Brands aus Unternehmensberatung und Coaching.",
+    introP6: "Was mich auszeichnet: Ich arbeite langfristig. Ich bin verlässlich und lege Wert auf Qualität. Deshalb suche ich Kunden, die diese Werte teilen und einen Partner wollen, der ihre Marke über einen längeren Zeitraum mit aufbaut.",
+    workTitel: "Meine Kundenprojekte",
+    aboutEyebrow: "Über mich",
+    aboutTitel: "Editing mit Performance-Hintergrund.",
+    aboutIntro: "Seit über 7 Jahren arbeite ich als Video-Editor in ganz unterschiedlichen Bereichen. Jeder davon hat mir etwas beigebracht, das heute in deinem Video steckt:",
+    b1t: "Performance Marketing",
+    b1p: "In einer Performance-Agentur habe ich gelernt, welche Videos messbar Ergebnisse bringen. Deshalb schneide ich datenbasiert statt nach Bauchgefühl. Für dich heißt das: mehr Klicks, mehr Leads, weniger verbranntes Werbebudget.",
+    b2t: "Personal Brands & YouTube",
+    b2p: "Mit Creatorn und YouTubern habe ich gelernt, was Menschen zum Stoppen bringt und dranbleiben lässt. Deshalb sitzen meine Hooks ab dem ersten Frame. Für dich heißt das: höhere Retention, mehr Reichweite, eine Brand, die wiedererkannt wird.",
+    b3t: "Business Consulting",
+    b3p: "Mit Beratern habe ich gelernt, komplexe Inhalte klar und glaubwürdig zu zeigen. Deshalb hebe ich die wichtigen Punkte gezielt hervor. Für dich heißt das: Zuschauer verstehen deine Botschaft und vertrauen dir.",
+    b4t: "Clubs & Events",
+    b4p: "Bei Veranstaltungen habe ich gelernt, Stimmung und Energie einzufangen. Deshalb weiß ich, welcher Schnitt und welche Effekte zu welcher Brand passen. Für dich heißt das: Content, der sich nach dir anfühlt.",
+    b5t: "Motion Design",
+    b5p: "Animationen setze ich nicht als Deko ein, sondern um deine Aussagen zu verstärken. Für dich heißt das: ein professioneller Look, der Aufmerksamkeit lenkt statt ablenkt.",
+    tagBrandLook: "Brand-Look",
+    statJahre: "Jahre Erfahrung",
+    statVideos: "Videos geschnitten",
+    statKontakt: "Ansprechpartner",
+    ctaStatus: "Offen für eine feste Zusammenarbeit",
+    ctaTitel: "Du suchst einen Video Editor für dein Team?",
+    ctaText: "Schreib mir eine kurze Nachricht, ich melde mich innerhalb von 24 Stunden.",
+    fImpressum: "Impressum",
+    fDatenschutz: "Datenschutz",
+    popupTitel: "Schreib mir",
+    popupKopieren: "Kopieren",
+    popupKopiert: "Kopiert",
+    popupManuell: "Bitte manuell kopieren",
+    popupOeffnen: "Im Mail-Programm öffnen",
+    mailBetreff: "Anfrage über dein Portfolio",
+    fotoAlt: "Calvin Betz, Video Editor und Motion Designer",
+    ariaSchliessen: "Schließen",
+    ariaVideoAnsehen: "Video ansehen",
+    ariaVideoAbspielen: "Video abspielen",
+    dateiFehlt: "Datei nicht gefunden: ",
+    ariaSprache: "Sprache"
+  },
+  en: {
+    titel: "CavCalvin Visuals – Video Editor & Motion Designer",
+    beschreibung: "Short-form video that performs: UGC ads, personal brand content and hooks by Calvin Betz.",
+    btnMail: "Email me",
+    btnArbeiten: "See my work",
+    heroEyebrow: "Video Editor · Motion Designer",
+    heroTitel: "More than just cuts.",
+    heroText: 'An <strong class="hl">editor</strong> who understands your brand and <strong class="hl">what’s trending right now</strong>. I don’t just create <strong class="hl">aesthetic videos</strong>. I create content that <strong class="hl">moves people</strong>, builds <strong class="hl">real connections</strong> and <strong class="hl">makes the algorithm work for you</strong>.',
+    introTitel: "Hi, I’m Calvin.",
+    introLead: "It all started with a Sony Ericsson and 0.3 megapixels.",
+    introP1: "As a kid I brought Playmobil figures to life with stop motion, moving them frame by frame. At 13 I got my first camcorder. I filmed holiday videos for my family and edited them in Windows Movie Maker.",
+    introP2: "It took me a long time to realise that this is my profession. It’s something I happily do all day, and I lose track of time while doing it. In Zurich I cut my first videos for YouTubers, clubs, coaches, consultants and gyms.",
+    introP3: "After that I worked independently in social media sales. Through my own Instagram account I built my first business with stories and my personality.",
+    introP4: "In 2024 I moved to Thailand, where I built the social media presence of a professional Muay Thai fighter. That’s where I properly understood the algorithm and the analytics, and learned how to optimise videos with intent.",
+    introP5: "Since 2026 I’ve been working for performance ad agencies in Switzerland and Germany. I also support personal brands in consulting and coaching.",
+    introP6: "What sets me apart: I work for the long term. I’m reliable and I care about quality. That’s why I look for clients who share those values and want a partner who helps build their brand over time.",
+    workTitel: "My Client Projects",
+    aboutEyebrow: "About me",
+    aboutTitel: "Editing with a performance background.",
+    aboutIntro: "For over 7 years I’ve worked as a video editor across very different fields. Each one taught me something that goes into your video today:",
+    b1t: "Performance Marketing",
+    b1p: "At a performance agency I learned which videos deliver measurable results. That’s why I edit based on data instead of gut feeling. For you that means more clicks, more leads and less wasted ad budget.",
+    b2t: "Personal Brands & YouTube",
+    b2p: "Working with creators and YouTubers taught me what makes people stop scrolling and keep watching. That’s why my hooks land from the very first frame. For you that means higher retention, more reach and a brand people recognise.",
+    b3t: "Business Consulting",
+    b3p: "Working with consultants taught me how to present complex content clearly and credibly. That’s why I highlight the points that matter. For you that means viewers understand your message and trust you.",
+    b4t: "Clubs & Events",
+    b4p: "Events taught me how to capture atmosphere and energy. That’s why I know which cuts and effects suit which brand. For you that means content that actually feels like you.",
+    b5t: "Motion Design",
+    b5p: "I don’t use animation as decoration, but to reinforce what you’re saying. For you that means a professional look that directs attention instead of stealing it.",
+    tagBrandLook: "Brand Look",
+    statJahre: "Years of experience",
+    statVideos: "Videos edited",
+    statKontakt: "Point of contact",
+    ctaStatus: "Open to a long-term collaboration",
+    ctaTitel: "Looking for a video editor for your team?",
+    ctaText: "Send me a short message and I’ll get back to you within 24 hours.",
+    fImpressum: "Legal Notice",
+    fDatenschutz: "Privacy Policy",
+    popupTitel: "Get in touch",
+    popupKopieren: "Copy",
+    popupKopiert: "Copied",
+    popupManuell: "Please copy manually",
+    popupOeffnen: "Open in mail app",
+    mailBetreff: "Enquiry via your portfolio",
+    fotoAlt: "Calvin Betz, video editor and motion designer",
+    ariaSchliessen: "Close",
+    ariaVideoAnsehen: "Watch video",
+    ariaVideoAbspielen: "Play video",
+    dateiFehlt: "File not found: ",
+    ariaSprache: "Language"
+  }
+};
+
+let sprache = (window.SPRACHE === "en" || window.SPRACHE === "de") ? window.SPRACHE : "de";
+const t = (k) => (TEXTE[sprache] && TEXTE[sprache][k]) || TEXTE.de[k] || "";
+
 /* =========================================================
    HIER ANPASSEN
    ========================================================= */
 
 // Deine E-Mail-Adresse (alle "E-Mail schreiben"-Buttons öffnen damit das Popup)
 const EMAIL = "cavcalvinvisuals@gmail.com";
-const MAIL_BETREFF = "Anfrage über dein Portfolio";
+
 
 // Dein Instagram-Profil
 const INSTAGRAM_URL = "https://instagram.com/DEIN-PROFIL";
@@ -304,13 +455,13 @@ const INSTAGRAM_URL = "https://instagram.com/DEIN-PROFIL";
 // Zu jedem Video gehört ein gleichnamiges .jpg als Vorschaubild (poster).
 // Reihenfolge hier = Reihenfolge auf der Seite. Beliebig viele Zeilen möglich.
 const VIDEOS = [
-  { datei: "videos/rasierer-ad.mp4",        titel: "UGC Ad · Bartöl" },
-  { datei: "videos/education-reel.mp4",     titel: "Education Reel · Personal Brand" },
-  { datei: "videos/clothingbrand.mp4",      titel: "Brand Film · Clothing Label" },
-  { datei: "videos/long-form-intro.mp4",    titel: "Long-Form Intro · Personal Brand" },
-  { datei: "videos/moebel-ad.mp4",          titel: "Brand Film · Gartenmöbel" },
-  { datei: "videos/superboncamp-edit.mp4",  titel: "Sport Edit · Muay Thai Camp" },
-  { datei: "videos/pizza-ad.mp4",           titel: "UGC Ad · Pizza" },
+  { datei: "videos/rasierer-ad.mp4",        titel: { de: "UGC Ad · Bartöl",                   en: "UGC Ad · Beard Oil" } },
+  { datei: "videos/education-reel.mp4",     titel: { de: "Education Reel · Personal Brand",  en: "Education Reel · Personal Brand" } },
+  { datei: "videos/clothingbrand.mp4",      titel: { de: "Brand Film · Clothing Label",     en: "Brand Film · Clothing Label" } },
+  { datei: "videos/long-form-intro.mp4",    titel: { de: "Long-Form Intro · Personal Brand", en: "Long-Form Intro · Personal Brand" } },
+  { datei: "videos/moebel-ad.mp4",          titel: { de: "Brand Film · Gartenmöbel",         en: "Brand Film · Garden Furniture" } },
+  { datei: "videos/superboncamp-edit.mp4",  titel: { de: "Sport Edit · Muay Thai Camp",     en: "Sport Edit · Muay Thai Camp" } },
+  { datei: "videos/pizza-ad.mp4",           titel: { de: "UGC Ad · Pizza",                   en: "UGC Ad · Pizza" } },
 ];
 
 // Videos im Querformat (16:9). Die bekommen eine breite Karte über die volle Zeile,
@@ -327,7 +478,7 @@ const mailOpen = document.getElementById("mailOpen");
 let fokusVorher = null;
 
 document.getElementById("mailAdresse").textContent = EMAIL;
-mailOpen.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(MAIL_BETREFF);
+mailOpen.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(t("mailBetreff"));
 
 function openMailbox() {
   fokusVorher = document.activeElement;
@@ -337,7 +488,7 @@ function openMailbox() {
 function closeMailbox() {
   if (!mailbox.classList.contains("open")) return;
   mailbox.classList.remove("open");
-  mailCopy.textContent = "Kopieren";
+  mailCopy.textContent = t("popupKopieren");
   if (fokusVorher) fokusVorher.focus();
 }
 document.querySelectorAll(".js-mail").forEach(b => b.addEventListener("click", openMailbox));
@@ -359,8 +510,8 @@ mailCopy.addEventListener("click", async () => {
     try { ok = document.execCommand("copy"); } catch (e2) { ok = false; }
     feld.remove();
   }
-  mailCopy.textContent = ok ? "Kopiert" : "Bitte manuell kopieren";
-  setTimeout(() => { mailCopy.textContent = "Kopieren"; }, 1800);
+  mailCopy.textContent = ok ? t("popupKopiert") : t("popupManuell");
+  setTimeout(() => { mailCopy.textContent = t("popupKopieren"); }, 1800);
 });
 document.getElementById("insta").href = INSTAGRAM_URL;
 
@@ -392,11 +543,12 @@ VIDEOS.forEach(({ datei: file, titel }) => {
   card.className = "card";
   card.tabIndex = 0;
   card.setAttribute("role", "button");
-  card.setAttribute("aria-label", "Video abspielen");
+  card.setAttribute("aria-label", t("ariaVideoAbspielen"));
+  card.dataset.i18nAria = "ariaVideoAbspielen";
   card.innerHTML = `
     <video muted playsinline loop preload="metadata" poster="${file.replace(/\.mp4$/i, ".jpg")}" src="${file}#t=0.1"></video>
     <span class="play"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span>
-    <span class="missing-note">Datei nicht gefunden: ${file}</span>`;
+    <span class="missing-note">${t("dateiFehlt")}${file}</span>`;
   const v = card.querySelector("video");
 
   v.addEventListener("error", () => card.classList.add("missing"));
@@ -419,11 +571,68 @@ VIDEOS.forEach(({ datei: file, titel }) => {
   }
   const caption = document.createElement("p");
   caption.className = "caption";
-  caption.textContent = titel;
+  caption.textContent = titel[sprache] || titel.de;
+  caption.dataset.titelDe = titel.de;
+  caption.dataset.titelEn = titel.en;
   item.appendChild(caption);
   item.appendChild(card);
   grid.appendChild(item);
 });
+
+/* ---------- Sprachumschaltung ---------- */
+function spracheAnwenden(neu) {
+  sprache = (neu === "en") ? "en" : "de";
+  document.documentElement.lang = sprache;
+
+  document.title = t("titel");
+  const meta = document.getElementById("metaBeschreibung");
+  if (meta) meta.setAttribute("content", t("beschreibung"));
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach(el => {
+    el.setAttribute("aria-label", t(el.dataset.i18nAria));
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => {
+    el.setAttribute("alt", t(el.dataset.i18nAlt));
+  });
+  document.querySelectorAll(".caption").forEach(el => {
+    const wert = sprache === "en" ? el.dataset.titelEn : el.dataset.titelDe;
+    if (wert) el.textContent = wert;
+  });
+
+  mailCopy.textContent = t("popupKopieren");
+  mailOpen.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(t("mailBetreff"));
+
+  document.querySelectorAll(".js-lang").forEach(b => {
+    b.setAttribute("aria-current", b.dataset.lang === sprache ? "true" : "false");
+  });
+  const gruppe = document.querySelector(".lang");
+  if (gruppe) gruppe.setAttribute("aria-label", t("ariaSprache"));
+
+  try { localStorage.setItem("lang", sprache); } catch (e) {}
+}
+
+document.querySelectorAll(".js-lang").forEach(b => {
+  b.addEventListener("click", () => {
+    spracheAnwenden(b.dataset.lang);
+    try {
+      const url = new URL(location.href);
+      url.searchParams.set("lang", sprache);
+      history.replaceState(null, "", url);
+    } catch (e) {}
+  });
+});
+
+try {
+  spracheAnwenden(sprache);
+} finally {
+  document.documentElement.style.visibility = "";
+}
 </script>
 </body>
 </html>

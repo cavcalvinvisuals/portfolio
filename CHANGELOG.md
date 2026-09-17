@@ -91,3 +91,16 @@
   "Kopiert"-Rückmeldung, mailto-Link mit Betreff "Anfrage über dein Portfolio"
 - Schließt per X, Klick daneben und Esc; Fokus springt beim Öffnen auf "Kopieren"
   und beim Schließen zurück auf den auslösenden Button
+
+## Zweisprachig (Deutsch / Englisch)
+- Sprachskript im <head>: Reihenfolge ?lang= > gespeicherte Wahl > Browsersprache
+  (alles was mit "de" beginnt -> Deutsch, sonst Englisch)
+- Kein Flackern: Markup ist deutsch, für Englisch wird die Seite bis zur
+  Übersetzung verborgen; Notbremse nach 1200 ms und noscript-Fallback
+- Umschalter "DE | EN" in der Navigation, aktive Sprache via aria-current
+- Wörterbuch TEXTE mit de/en, Zuordnung über data-i18n, -html, -aria, -alt
+- Übersetzt: Meta-Title, Meta-Description, alle Texte, Buttons, Popup,
+  mailto-Betreff, Bild-Alternativtext, Vorlesehilfen, zwei Video-Titel
+- Auswahl wird in localStorage gespeichert, URL wird per replaceState angepasst
+- Mobile Navigation verdichtet, damit Logo, Umschalter und Button nebeneinander passen
+- Englischer Hero-Text auf Wunsch: "what's trending right now" statt "zeitgeist"
