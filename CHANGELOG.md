@@ -111,3 +111,10 @@
 - Beide Fotos liegen jetzt in .intro-bilder, dieser Wrapper ist sticky
 - Zweites Foto auf 66 % Breite und rechtsbündig, damit die Bildspalte kürzer
   bleibt als der Text und das Mitscrollen überhaupt Spielraum hat
+
+## Drittes Foto
+- IMG_6714.JPG.jpeg nach bilder/calvin-3.jpg (1000x1250, 106 KB)
+- Sonderregel für das zweite Foto entfernt: alle drei sind jetzt gleich groß
+- Hinweis: die Bildspalte ist mit 1390 px deutlich höher als der Text (812 px),
+  dadurch kann sticky nicht mehr greifen. Die Regel bleibt im CSS stehen und
+  wirkt automatisch wieder, sobald der Text länger ist als die Bilder.
