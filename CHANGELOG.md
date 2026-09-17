@@ -172,3 +172,6 @@
 - prefers-reduced-motion: Umschaltung ohne Animation
 - Ohne GSAP greift ein Fallback, der ohne Animation auf- und zuklappt
 - Bildstapel am Desktop auf die eingeklappte Texthöhe abgestimmt (501 zu 503 px)
+- Korrektur: "Durch diese Erfahrung ..." ist jetzt ebenfalls immer sichtbar.
+  Eingeklappt bleibt nur noch der Werdegang von Zürich bis 2026.
+  Bildstapel entsprechend neu abgestimmt (Text 643, Bilder 645 px, beide Sprachen).
