@@ -136,3 +136,6 @@
   jede um 19 % nach rechts und 36 % nach oben versetzt, leicht gedreht
 - Gruppenhöhe 803 px bei 812 px Text, läuft also parallel zum Text aus
 - Die mobile Ansicht bleibt der Fächer nebeneinander, unverändert
+- Korrektur: der Fächer nebeneinander gilt jetzt ab 1000 px abwärts statt erst ab 680 px.
+  Auf Tablets (etwa 768 px) griff vorher noch das Desktop-Layout mit übergroßen
+  Bildern und einer sehr schmalen Textspalte.
