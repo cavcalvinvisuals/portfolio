@@ -118,3 +118,15 @@
 - Hinweis: die Bildspalte ist mit 1390 px deutlich höher als der Text (812 px),
   dadurch kann sticky nicht mehr greifen. Die Regel bleibt im CSS stehen und
   wirkt automatisch wieder, sobald der Text länger ist als die Bilder.
+
+## Fotos als Kartenfächer
+- Die drei Fotos liegen jetzt überlappend nebeneinander statt untereinander,
+  leicht gedreht (-4°, +1.5°, +5°) mit Schlagschatten
+- Hover/Fokus: Karte kommt nach vorne (z-index 10, gerade gedreht, 6 % größer,
+  stärkerer Schatten), die anderen gehen auf 55 % Deckkraft zurück
+- Breitenformel: 3 × 50 % Karte − 2 × 25 % Versatz = exakt 100 % der Spalte,
+  dadurch ragt nichts mehr in den Text
+- Spalte auf max. 500 px verbreitert, damit die Karten nicht zu klein werden
+- Nebeneinander ist die Gruppe nur noch 365 px hoch statt 1390 px, deshalb
+  funktioniert das Mitscrollen wieder (434 px Spielraum)
+- prefers-reduced-motion: keine Drehung, geringere Überlappung
