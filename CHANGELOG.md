@@ -158,3 +158,17 @@
   Auf iPhone/Mac erscheint damit die echte San Francisco, sonst Inter
 - Space Grotesk entfernt (war die markante Headline-Schrift), nur noch Inter
   wird geladen, dafür mit Gewicht 700
+
+## Weiterlesen im Über-mich-Bereich
+- Kleine Zeile "Hi, ich bin Calvin." über der Headline "Alles begann mit 0,3 Megapixeln."
+- Erster Absatz immer sichtbar; Zürich bis 2026 sowie "Durch diese Erfahrung"
+  eingeklappt auf 96 px mit Verlauf zur Hintergrundfarbe
+- Button "Meine Geschichte lesen" / "Weniger anzeigen" mit aria-expanded und
+  aria-controls, Pfeil dreht sich beim Aufklappen
+- Höhe über GSAP 3.12.5 animiert (0.6 s, power2.inOut), danach werden
+  ScrollTrigger und Lenis aufgerufen, falls vorhanden
+- "Was mich auszeichnet" steht unverändert unter dem Button
+- Text bleibt komplett im DOM, nur die Höhe wird begrenzt
+- prefers-reduced-motion: Umschaltung ohne Animation
+- Ohne GSAP greift ein Fallback, der ohne Animation auf- und zuklappt
+- Bildstapel am Desktop auf die eingeklappte Texthöhe abgestimmt (501 zu 503 px)

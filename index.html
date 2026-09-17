@@ -93,10 +93,10 @@
   .intro { padding: 0 0 clamp(70px, 9vw, 110px); }
   .intro .wrap { display: grid; grid-template-columns: minmax(280px, 500px) 1fr; gap: clamp(32px, 5vw, 76px); align-items: start; }
   .intro-bilder { position: sticky; top: 110px; align-self: start; display: flex; flex-direction: column; }
-  .intro figure { width: 58%; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--card-empty); box-shadow: 0 16px 38px rgba(13,14,19,.16); transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
+  .intro figure { width: 46%; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--card-empty); box-shadow: 0 16px 38px rgba(13,14,19,.16); transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
   .intro figure:nth-child(1) { z-index: 1; transform: rotate(-2.5deg); }
-  .intro figure:nth-child(2) { z-index: 2; margin-top: -39%; margin-left: 21%; transform: rotate(1.5deg); }
-  .intro figure:nth-child(3) { z-index: 3; margin-top: -39%; margin-left: 42%; transform: rotate(-1deg); }
+  .intro figure:nth-child(2) { z-index: 2; margin-top: -36%; margin-left: 27%; transform: rotate(1.5deg); }
+  .intro figure:nth-child(3) { z-index: 3; margin-top: -36%; margin-left: 54%; transform: rotate(-1deg); }
   .intro-bilder:hover figure { opacity: .55; }
   .intro figure:hover, .intro figure:focus-within { opacity: 1; z-index: 10; transform: rotate(0deg) translateY(-14px) scale(1.06); box-shadow: 0 30px 60px rgba(13,14,19,.28); }
   .intro figure img { width: 100%; height: 100%; object-fit: cover; }
@@ -104,6 +104,15 @@
   .intro p { font-size: clamp(1.02rem, 1.25vw, 1.2rem); line-height: 1.7; color: var(--muted); max-width: 40em; }
   .intro p + p { margin-top: 20px; }
   .intro .lead { color: var(--ink); font-size: clamp(1.15rem, 1.5vw, 1.4rem); font-weight: 500; line-height: 1.5; }
+  .intro .hallo { font-size: 1.05rem; font-weight: 600; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+  .mehr { position: relative; overflow: hidden; }
+  .mehr.zu { height: 96px; }
+  .mehr.zu::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: linear-gradient(to bottom, rgba(250,250,248,0), var(--bg)); pointer-events: none; }
+  .mehr-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 13px 24px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1rem; font-weight: 500; cursor: pointer; transition: border-color .2s; }
+  .mehr-btn:hover { border-color: var(--ink); }
+  .mehr-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; transition: transform .3s ease; }
+  .mehr-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .intro .nach-button { margin-top: 26px; }
 
   /* Work */
   .work { padding: 40px 0 120px; }
@@ -203,6 +212,7 @@
     .intro figure { transform: none !important; }
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
 
@@ -247,11 +257,15 @@
         </figure>
       </div>
       <div>
-        <h2 data-i18n="introTitel">Hi, ich bin Calvin.</h2>
-        <p class="lead" data-i18n="introLead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln, als ich Stop-Motion entdeckte und meine Spielsachen zum Leben erweckte. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.</p>
-        <p data-i18n="introP1">Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.</p>
-        <p data-i18n="introP2">Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.</p>
-        <p data-i18n="introP3">Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.</p>
+        <p class="hallo" data-i18n="introHallo">Hi, ich bin Calvin.</p>
+        <h2 data-i18n="introTitel">Alles begann mit 0,3 Megapixeln.</h2>
+        <p class="lead" data-i18n="introLead">Mit einem Sony Ericsson entdeckte ich Stop-Motion und erweckte meine Spielsachen zum Leben. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.</p>
+        <div class="mehr zu" id="introMehr">
+          <p data-i18n="introP1">Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.</p>
+          <p data-i18n="introP2">Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.</p>
+        </div>
+        <button class="mehr-btn" id="mehrBtn" type="button" aria-expanded="false" aria-controls="introMehr"><span data-i18n="btnMehr">Meine Geschichte lesen</span> <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <p class="nach-button" data-i18n="introP3">Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.</p>
       </div>
     </div>
   </section>
@@ -357,8 +371,11 @@ const TEXTE = {
     heroEyebrow: "Video Editor · Motion Designer",
     heroTitel: "Mehr als ein Cutter.",
     heroText: 'Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.',
-    introTitel: "Hi, ich bin Calvin.",
-    introLead: "Alles begann mit einem Sony Ericsson und 0,3 Megapixeln, als ich Stop-Motion entdeckte und meine Spielsachen zum Leben erweckte. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.",
+    introHallo: "Hi, ich bin Calvin.",
+    introTitel: "Alles begann mit 0,3 Megapixeln.",
+    introLead: "Mit einem Sony Ericsson entdeckte ich Stop-Motion und erweckte meine Spielsachen zum Leben. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.",
+    btnMehr: "Meine Geschichte lesen",
+    btnWeniger: "Weniger anzeigen",
     introP1: "Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.",
     introP2: "Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.",
     introP3: "Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.",
@@ -408,8 +425,11 @@ const TEXTE = {
     heroEyebrow: "Video Editor · Motion Designer",
     heroTitel: "More than just cuts.",
     heroText: 'An <strong class="hl">editor</strong> who understands your brand and <strong class="hl">what’s trending right now</strong>. I don’t just create <strong class="hl">aesthetic videos</strong>. I create content that <strong class="hl">moves people</strong>, builds <strong class="hl">real connections</strong> and <strong class="hl">makes the algorithm work for you</strong>.',
-    introTitel: "Hi, I’m Calvin.",
-    introLead: "It all started with a Sony Ericsson and 0.3 megapixels, when I discovered stop motion and brought my toys to life. At 13 I got a camcorder, filmed holiday videos for the family and edited them in Windows Movie Maker.",
+    introHallo: "Hi, I’m Calvin.",
+    introTitel: "It all started with 0.3 megapixels.",
+    introLead: "With a Sony Ericsson I discovered stop motion and brought my toys to life. At 13 I got a camcorder, filmed holiday videos for the family and edited them in Windows Movie Maker.",
+    btnMehr: "Read my story",
+    btnWeniger: "Show less",
     introP1: "It took me a long time to realise that this is my profession, because I lose all track of time doing it. In Zurich I started cutting videos for YouTubers, coaches, clubs and gyms. After that I went self-employed in social media, sold my own courses and learned first-hand what works there. In 2024 I put that knowledge to work in Thailand for a Muay Thai fighter, and learned everything about the algorithm and retention along the way. Since 2026 I have been working for performance ad agencies and personal brands.",
     introP2: "Because of that background I am not an editor who only cuts. I understand what your content is about, I think along with you and I work independently. Whether you are an agency or a personal brand, that saves you an enormous amount of time and frees you up for the things that matter.",
     introP3: "What sets me apart: I work reliably, for the long term and with real standards for quality. That is why I look for clients where exactly that kind of collaboration is possible and who share the same values.",
@@ -596,6 +616,55 @@ VIDEOS.forEach(({ datei: file, titel }) => {
   grid.appendChild(item);
 });
 
+/* ---------- Weiterlesen im Ueber-mich-Bereich ---------- */
+const mehrBox = document.getElementById("introMehr");
+const mehrBtn = document.getElementById("mehrBtn");
+const mehrText = mehrBtn.querySelector("span");
+const ZU_HOEHE = 96;
+
+function nachAnimation() {
+  /* Falls spaeter Lenis oder ScrollTrigger dazukommen, Hoehen neu einlesen */
+  if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === "function") window.ScrollTrigger.refresh();
+  if (window.lenis && typeof window.lenis.resize === "function") window.lenis.resize();
+}
+
+function mehrUmschalten() {
+  const offen = mehrBtn.getAttribute("aria-expanded") === "true";
+  const bewegungAus = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dauer = bewegungAus ? 0 : 0.6;
+
+  if (offen) {
+    mehrBtn.setAttribute("aria-expanded", "false");
+    mehrText.textContent = t("btnMehr");
+    gsap.fromTo(mehrBox,
+      { height: mehrBox.scrollHeight },
+      { height: ZU_HOEHE, duration: dauer, ease: "power2.inOut",
+        onComplete() { mehrBox.classList.add("zu"); mehrBox.style.height = ""; nachAnimation(); } });
+  } else {
+    mehrBtn.setAttribute("aria-expanded", "true");
+    mehrText.textContent = t("btnWeniger");
+    mehrBox.classList.remove("zu");
+    gsap.fromTo(mehrBox,
+      { height: ZU_HOEHE },
+      { height: mehrBox.scrollHeight, duration: dauer, ease: "power2.inOut",
+        onComplete() { mehrBox.style.height = "auto"; nachAnimation(); } });
+  }
+}
+
+if (window.gsap) {
+  mehrBtn.addEventListener("click", mehrUmschalten);
+} else {
+  /* Ohne GSAP bleibt der Text trotzdem erreichbar */
+  mehrBtn.addEventListener("click", () => {
+    const offen = mehrBtn.getAttribute("aria-expanded") === "true";
+    mehrBtn.setAttribute("aria-expanded", offen ? "false" : "true");
+    mehrBox.classList.toggle("zu", offen);
+    mehrBox.style.height = offen ? "" : "auto";
+    mehrText.textContent = offen ? t("btnMehr") : t("btnWeniger");
+    nachAnimation();
+  });
+}
+
 /* ---------- Sprachumschaltung ---------- */
 function spracheAnwenden(neu) {
   sprache = (neu === "en") ? "en" : "de";
@@ -624,6 +693,11 @@ function spracheAnwenden(neu) {
 
   mailCopy.textContent = t("popupKopieren");
   mailOpen.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(t("mailBetreff"));
+
+  /* Der Weiterlesen-Button haengt vom Zustand ab, nicht nur vom Woerterbuch */
+  mehrText.textContent = mehrBtn.getAttribute("aria-expanded") === "true" ? t("btnWeniger") : t("btnMehr");
+  /* Uebersetzter Text ist unterschiedlich lang: offene Hoehe neu messen */
+  if (mehrBtn.getAttribute("aria-expanded") === "true") mehrBox.style.height = "auto";
 
   document.querySelectorAll(".js-lang").forEach(b => {
     b.setAttribute("aria-current", b.dataset.lang === sprache ? "true" : "false");
