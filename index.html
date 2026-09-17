@@ -93,10 +93,10 @@
   .intro { padding: 0 0 clamp(70px, 9vw, 110px); }
   .intro .wrap { display: grid; grid-template-columns: minmax(280px, 500px) 1fr; gap: clamp(32px, 5vw, 76px); align-items: start; }
   .intro-bilder { position: sticky; top: 110px; align-self: start; display: flex; flex-direction: column; }
-  .intro figure { width: 62%; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--card-empty); box-shadow: 0 16px 38px rgba(13,14,19,.16); transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
+  .intro figure { width: 58%; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: var(--card-empty); box-shadow: 0 16px 38px rgba(13,14,19,.16); transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
   .intro figure:nth-child(1) { z-index: 1; transform: rotate(-2.5deg); }
-  .intro figure:nth-child(2) { z-index: 2; margin-top: -36%; margin-left: 19%; transform: rotate(1.5deg); }
-  .intro figure:nth-child(3) { z-index: 3; margin-top: -36%; margin-left: 38%; transform: rotate(-1deg); }
+  .intro figure:nth-child(2) { z-index: 2; margin-top: -39%; margin-left: 21%; transform: rotate(1.5deg); }
+  .intro figure:nth-child(3) { z-index: 3; margin-top: -39%; margin-left: 42%; transform: rotate(-1deg); }
   .intro-bilder:hover figure { opacity: .55; }
   .intro figure:hover, .intro figure:focus-within { opacity: 1; z-index: 10; transform: rotate(0deg) translateY(-14px) scale(1.06); box-shadow: 0 30px 60px rgba(13,14,19,.28); }
   .intro figure img { width: 100%; height: 100%; object-fit: cover; }
@@ -248,13 +248,10 @@
       </div>
       <div>
         <h2 data-i18n="introTitel">Hi, ich bin Calvin.</h2>
-        <p class="lead" data-i18n="introLead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.</p>
-        <p data-i18n="introP1">Als Kind habe ich Playmobilfiguren mit Stop-Motion zum Leben erweckt. Ich habe sie Bild für Bild bewegt. Mit 13 bekam ich meinen ersten Camcorder. Ich filmte Urlaubsvideos für meine Familie und bearbeitete sie mit Windows Movie Maker.</p>
-        <p data-i18n="introP2">Erst viel später wurde mir klar, dass genau das mein Beruf ist. Es ist etwas, das ich den ganzen Tag gerne mache. Dabei verliere ich das Zeitgefühl. In Zürich habe ich meine ersten Videos für YouTuberinnen, Clubs, Coaches, Berater und Fitnessstudios geschnitten.</p>
-        <p data-i18n="introP3">Danach habe ich selbstständig im Social-Media-Vertrieb gearbeitet. Über meinen eigenen Instagram-Account habe ich mit Stories und meiner Persönlichkeit mein erstes Geschäft aufgebaut.</p>
-        <p data-i18n="introP4">2024 bin ich nach Thailand gegangen. Dort habe ich den Social-Media-Auftritt eines Profi-Muay-Thai-Kämpfers aufgebaut. Ich habe den Algorithmus und die Analytics richtig verstanden. Außerdem habe ich gelernt, Videos gezielt zu optimieren.</p>
-        <p data-i18n="introP5">Seit 2026 arbeite ich für Performance-Ad-Agenturen in der Schweiz und in Deutschland. Ich unterstütze auch Personal Brands aus Unternehmensberatung und Coaching.</p>
-        <p data-i18n="introP6">Was mich auszeichnet: Ich arbeite langfristig. Ich bin verlässlich und lege Wert auf Qualität. Deshalb suche ich Kunden, die diese Werte teilen und einen Partner wollen, der ihre Marke über einen längeren Zeitraum mit aufbaut.</p>
+        <p class="lead" data-i18n="introLead">Alles begann mit einem Sony Ericsson und 0,3 Megapixeln, als ich Stop-Motion entdeckte und meine Spielsachen zum Leben erweckte. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.</p>
+        <p data-i18n="introP1">Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.</p>
+        <p data-i18n="introP2">Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.</p>
+        <p data-i18n="introP3">Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.</p>
       </div>
     </div>
   </section>
@@ -361,13 +358,10 @@ const TEXTE = {
     heroTitel: "Mehr als ein Cutter.",
     heroText: 'Ein <strong class="hl">Editor</strong>, der deine Marke und den <strong class="hl">Zeitgeist versteht</strong>. Ich kreiere nicht nur <strong class="hl">ästhetische Videos</strong>, sondern Content, der <strong class="hl">Menschen bewegt</strong>, <strong class="hl">echte Verbindungen</strong> aufbaut und den <strong class="hl">Algorithmus für dich arbeiten lässt</strong>.',
     introTitel: "Hi, ich bin Calvin.",
-    introLead: "Alles begann mit einem Sony Ericsson und 0,3 Megapixeln.",
-    introP1: "Als Kind habe ich Playmobilfiguren mit Stop-Motion zum Leben erweckt. Ich habe sie Bild für Bild bewegt. Mit 13 bekam ich meinen ersten Camcorder. Ich filmte Urlaubsvideos für meine Familie und bearbeitete sie mit Windows Movie Maker.",
-    introP2: "Erst viel später wurde mir klar, dass genau das mein Beruf ist. Es ist etwas, das ich den ganzen Tag gerne mache. Dabei verliere ich das Zeitgefühl. In Zürich habe ich meine ersten Videos für YouTuberinnen, Clubs, Coaches, Berater und Fitnessstudios geschnitten.",
-    introP3: "Danach habe ich selbstständig im Social-Media-Vertrieb gearbeitet. Über meinen eigenen Instagram-Account habe ich mit Stories und meiner Persönlichkeit mein erstes Geschäft aufgebaut.",
-    introP4: "2024 bin ich nach Thailand gegangen. Dort habe ich den Social-Media-Auftritt eines Profi-Muay-Thai-Kämpfers aufgebaut. Ich habe den Algorithmus und die Analytics richtig verstanden. Außerdem habe ich gelernt, Videos gezielt zu optimieren.",
-    introP5: "Seit 2026 arbeite ich für Performance-Ad-Agenturen in der Schweiz und in Deutschland. Ich unterstütze auch Personal Brands aus Unternehmensberatung und Coaching.",
-    introP6: "Was mich auszeichnet: Ich arbeite langfristig. Ich bin verlässlich und lege Wert auf Qualität. Deshalb suche ich Kunden, die diese Werte teilen und einen Partner wollen, der ihre Marke über einen längeren Zeitraum mit aufbaut.",
+    introLead: "Alles begann mit einem Sony Ericsson und 0,3 Megapixeln, als ich Stop-Motion entdeckte und meine Spielsachen zum Leben erweckte. Mit 13 bekam ich einen Camcorder, filmte Urlaubsvideos für die Familie und bearbeitete sie mit Windows Movie Maker.",
+    introP1: "Erst viel später wurde mir klar, dass das mein Beruf ist, weil ich dabei die Zeit vergesse. In Zürich begann ich, Videos für YouTuberinnen, Coaches, Clubs und Fitnessstudios zu schneiden. Danach machte ich mich mit Social Media selbstständig, verkaufte eigene Kurse und lernte selbst, was dort funktioniert. 2024 setzte ich dieses Wissen in Thailand für einen Muay-Thai-Kämpfer ein und lernte dabei alles über Algorithmus und Retention. Seit 2026 arbeite ich für Performance-Ad-Agenturen und Personal Brands.",
+    introP2: "Durch diese Erfahrung bin ich kein Editor, der nur schneidet. Ich verstehe, worum es in deinem Content geht, denke mit und arbeite eigenständig. Ob Agentur oder Personal Brand: Du sparst dadurch enorm viel Zeit und kannst dich um die wichtigen Dinge kümmern.",
+    introP3: "Was mich auszeichnet: Ich arbeite zuverlässig, langfristig und mit Anspruch an Qualität. Deshalb suche ich Kunden, mit denen genau so eine Zusammenarbeit möglich ist und die dieselben Werte teilen.",
     workTitel: "Meine Kundenprojekte",
     aboutEyebrow: "Über mich",
     aboutTitel: "Editing mit Performance-Hintergrund.",
@@ -415,13 +409,10 @@ const TEXTE = {
     heroTitel: "More than just cuts.",
     heroText: 'An <strong class="hl">editor</strong> who understands your brand and <strong class="hl">what’s trending right now</strong>. I don’t just create <strong class="hl">aesthetic videos</strong>. I create content that <strong class="hl">moves people</strong>, builds <strong class="hl">real connections</strong> and <strong class="hl">makes the algorithm work for you</strong>.',
     introTitel: "Hi, I’m Calvin.",
-    introLead: "It all started with a Sony Ericsson and 0.3 megapixels.",
-    introP1: "As a kid I brought Playmobil figures to life with stop motion, moving them frame by frame. At 13 I got my first camcorder. I filmed holiday videos for my family and edited them in Windows Movie Maker.",
-    introP2: "It took me a long time to realise that this is my profession. It’s something I happily do all day, and I lose track of time while doing it. In Zurich I cut my first videos for YouTubers, clubs, coaches, consultants and gyms.",
-    introP3: "After that I worked independently in social media sales. Through my own Instagram account I built my first business with stories and my personality.",
-    introP4: "In 2024 I moved to Thailand, where I built the social media presence of a professional Muay Thai fighter. That’s where I properly understood the algorithm and the analytics, and learned how to optimise videos with intent.",
-    introP5: "Since 2026 I’ve been working for performance ad agencies in Switzerland and Germany. I also support personal brands in consulting and coaching.",
-    introP6: "What sets me apart: I work for the long term. I’m reliable and I care about quality. That’s why I look for clients who share those values and want a partner who helps build their brand over time.",
+    introLead: "It all started with a Sony Ericsson and 0.3 megapixels, when I discovered stop motion and brought my toys to life. At 13 I got a camcorder, filmed holiday videos for the family and edited them in Windows Movie Maker.",
+    introP1: "It took me a long time to realise that this is my profession, because I lose all track of time doing it. In Zurich I started cutting videos for YouTubers, coaches, clubs and gyms. After that I went self-employed in social media, sold my own courses and learned first-hand what works there. In 2024 I put that knowledge to work in Thailand for a Muay Thai fighter, and learned everything about the algorithm and retention along the way. Since 2026 I have been working for performance ad agencies and personal brands.",
+    introP2: "Because of that background I am not an editor who only cuts. I understand what your content is about, I think along with you and I work independently. Whether you are an agency or a personal brand, that saves you an enormous amount of time and frees you up for the things that matter.",
+    introP3: "What sets me apart: I work reliably, for the long term and with real standards for quality. That is why I look for clients where exactly that kind of collaboration is possible and who share the same values.",
     workTitel: "My Client Projects",
     aboutEyebrow: "About me",
     aboutTitel: "Editing with a performance background.",

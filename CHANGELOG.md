@@ -145,3 +145,9 @@
   In den Handy- und Tablet-Regeln war das nur allgemein zurückgesetzt, nicht pro
   Karte; da nth-child spezifischer ist, blieb der Wert aktiv und zog Karte 2 und 3
   nach oben, sodass Karte 1 durchzuhängen schien.
+
+## Über-mich-Text neu gefasst
+- Calvins überarbeiteter Text ersetzt die alte Fassung: 4 Absätze statt 7
+- Englische Übersetzung entsprechend neu, introP4 bis introP6 entfallen
+- Desktop-Stapel an die neue Textlänge angepasst (Karten 58 % statt 62 %,
+  Versatz -39 % statt -36 %): Bilder 698 px, Text 697 px auf Deutsch
